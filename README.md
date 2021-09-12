@@ -1,2 +1,3 @@
-# reactjs-app-template
-A template I use for ReactJS apps
+# Admin Tool
+
+Admin Tool web app for Knight Hacks
