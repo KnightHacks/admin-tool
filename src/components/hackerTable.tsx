@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { API, HackerData } from '@knighthacks/hackathon';
 import HackerRender from './hacker';
 export default function HackerTable({ api }: { api: API }): JSX.Element {

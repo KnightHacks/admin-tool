@@ -1,18 +1,17 @@
 import { HackerData } from '@knighthacks/hackathon';
 import React, { useState, useEffect } from 'react';
-import HackerModal from './hackerModal';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 interface HackerRenderProps {
   data: HackerData;
 }
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
-  function OpenModal(
-    { data }: HackerRenderProps,
-    handleClose: boolean,
-    show: boolean,
-  ) {
-    setShow(true);
-    handleShow();
-    <HackerModal data={data} handleClose={handleClose} show={show} />;
+  function BeginnerStatus(status: boolean | undefined): string {
+    if (status === true) return 'Yes';
+    else return 'No';
   }
   function ColorStatus(status: string) {
     switch (status) {
@@ -25,10 +24,6 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     }
   }
   const [status, setStatus] = useState('');
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   useEffect(() => {
     if (data.isAccepted === false && data.rsvpStatus === true) {
       setStatus('Pending');
@@ -41,7 +36,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
 
   return (
     <div>
-      <p>
+      {/* <p>
         {data.firstName} - {data.lastName}
       </p>
       <button
@@ -49,7 +44,32 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
         onClick={OpenModal(data, handleClose, show)}
       >
         {status}
-      </button>
+      </button> */}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>
+            {data.firstName} - {data.lastName}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            <p>Beginner: {BeginnerStatus(data.beginner)}</p>
+            <p>Pronouns: {data.pronouns}</p>
+            <p>
+              Status:
+              <button style={{ backgroundColor: ColorStatus(status) }}>
+                {status}
+              </button>
+            </p>
+          </Typography>
+          <button style={{ backgroundColor: 'green' }}>Accept</button>
+          <button style={{ backgroundColor: 'red' }}>Decline</button>
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 }
