@@ -2,6 +2,7 @@
 import React from 'react';
 import { API, HackerData } from '@knighthacks/hackathon';
 import HackerRender from './hacker';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function HackerTable({ api }: { api: API }): JSX.Element {
   // const [hacker, setHacker] = useState<Hacker[]>([]);
   // useEffect(() => {
