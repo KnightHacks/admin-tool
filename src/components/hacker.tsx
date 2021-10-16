@@ -5,69 +5,69 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 interface HackerRenderProps {
   data: HackerData;
 }
+
+type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
+
+function hackerState(data: HackerData): HackerStatusState {
+  if (data.isAccepted === false && data.rsvpStatus === true) {
+    return 'Pending';
+  } else if (data.isAccepted === true && data.rsvpStatus === true) {
+    return 'Accepted';
+  } else {
+    return 'Declined';
+  }
+}
+
+function colorStatus(status: string) {
+  switch (status) {
+    case 'Pending':
+      return 'warning';
+    case 'Accepted':
+      return 'success';
+    case 'Declined':
+      return 'danger';
+  }
+}
+
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
-  function BeginnerStatus(status: boolean | undefined): string {
-    if (status === true) return 'Yes';
-    else return 'No';
-  }
-  function ColorStatus(status: string) {
-    switch (status) {
-      case 'Pending':
-        return 'Yellow';
-      case 'Accepted':
-        return 'Green';
-      case 'Declined':
-        return 'Red';
-    }
-  }
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState<HackerStatusState>('Pending');
+
   useEffect(() => {
-    if (data.isAccepted === false && data.rsvpStatus === true) {
-      setStatus('Pending');
-    } else if (data.isAccepted === true && data.rsvpStatus === true) {
-      setStatus('Accepted');
-    } else if (data.isAccepted === false && data.rsvpStatus === false) {
-      setStatus('Declined');
-    }
+    const updatedStatus = hackerState(data);
+    setStatus(updatedStatus);
   }, []);
 
   return (
     <div>
-      {/* <p>
-        {data.firstName} - {data.lastName}
-      </p>
-      <button
-        style={{ backgroundColor: ColorStatus(status) }}
-        onClick={OpenModal(data, handleClose, show)}
-      >
-        {status}
-      </button> */}
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>
+          <h1 style={{ fontWeight: 700 }}>
             {data.firstName} - {data.lastName}
-          </Typography>
+          </h1>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <p>Beginner: {BeginnerStatus(data.beginner)}</p>
+            <p>Beginner: {data.beginner ? 'Yes' : 'No'}</p>
             <p>Pronouns: {data.pronouns}</p>
             <p>
               Status:
-              <button style={{ backgroundColor: ColorStatus(status) }}>
-                {status}
-              </button>
+              <span className={`tag is-${colorStatus(status)}`}>{status}</span>
             </p>
           </Typography>
-          <button style={{ backgroundColor: 'green' }}>Accept</button>
-          <button style={{ backgroundColor: 'red' }}>Decline</button>
+          <div style={{ margin: 10 }}>
+            <button className="button is-success" style={{ marginRight: 5 }}>
+              Accept
+            </button>
+            <button className="button is-danger">Decline</button>
+          </div>
         </AccordionDetails>
       </Accordion>
     </div>
