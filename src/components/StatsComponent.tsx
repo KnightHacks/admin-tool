@@ -19,8 +19,6 @@ export default function StatsComponent(): JSX.Element {
     .catch((err) => {
       throw new Error(err);
     });
-  console.log(stats);
-  console.log(stats.hackers);
   return (
     <div
       style={{
@@ -29,9 +27,9 @@ export default function StatsComponent(): JSX.Element {
         alignItems: 'center',
       }}
     >
-      {/* {dummyData.map((stat) => (
-        <Stats key={stat.statsName} data={stat} />
-      ))} */}
+      <p>Total hackers: {stats.hackers}</p>
+      <p>Total sponsors: {stats.sponsors}</p>
+      <p>Total: {stats.total}</p>
     </div>
   );
 }
