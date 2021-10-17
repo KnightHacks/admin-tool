@@ -87,7 +87,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
             <button className="button is-danger">Decline</button>
           </div>
           <iframe
-            src={`//api.knighthacks.org/api/hackers//${data.email}/resume/`}
+            src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
           />
         </AccordionDetails>
       </Accordion>
