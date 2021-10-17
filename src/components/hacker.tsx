@@ -32,42 +32,43 @@ function acceptHacker(data: Hacker, email: string): void {
     }).catch((err) => {
       throw new Error(err);
     });
+    setHackerText(data.first_name + data.last_name + ' has been accepted!');
   } else {
     setHackerText(
-      data.first_name + data.last_name + ' has already been sent the email!',
+      data.first_name + data.last_name + ' has already been accepted!',
     );
   }
 }
 
-type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
-function hackerState(data: Hacker): HackerStatusState {
-  console.log(data);
-  if (data.isaccepted === false && data.rsvp_status === true) {
-    return 'Pending';
-  } else if (data.isaccepted === true && data.rsvp_status === true) {
-    return 'Accepted';
-  } else {
-    return 'Declined';
-  }
-}
+// type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
+// function hackerState(data: Hacker): HackerStatusState {
+//   console.log(data);
+//   if (data.isaccepted === false && data.rsvp_status === true) {
+//     return 'Pending';
+//   } else if (data.isaccepted === true && data.rsvp_status === true) {
+//     return 'Accepted';
+//   } else {
+//     return 'Declined';
+//   }
+// }
 
-function colorStatus(status: string) {
-  switch (status) {
-    case 'Pending':
-      return 'warning';
-    case 'Accepted':
-      return 'success';
-    case 'Declined':
-      return 'danger';
-  }
-}
+// function colorStatus(status: string) {
+//   switch (status) {
+//     case 'Pending':
+//       return 'warning';
+//     case 'Accepted':
+//       return 'success';
+//     case 'Declined':
+//       return 'danger';
+//   }
+// }
 
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
-  const [status, setStatus] = useState<HackerStatusState>('Pending');
-  useEffect(() => {
-    const updatedStatus = hackerState(data);
-    setStatus(updatedStatus);
-  }, []);
+  // const [status, setStatus] = useState<HackerStatusState>('Pending');
+  // useEffect(() => {
+  //   const updatedStatus = hackerState(data);
+  //   setStatus(updatedStatus);
+  // }, []);
 
   return (
     <div>
@@ -84,16 +85,16 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
         <AccordionDetails>
           <Typography>
             <p>Beginner: {data.beginner ? 'Yes' : 'No'}</p>
-            <p>
+            {/* <p>
               Status:
               <span className={`tag is-${colorStatus(status)}`}>{status}</span>
-            </p>
+            </p> */}
           </Typography>
           <div style={{ margin: 10 }}>
             <button
               className="button is-success"
               style={{ marginRight: 5 }}
-              onClick={() => acceptHacker(data.email)}
+              onClick={() => acceptHacker(data, data.email)}
             >
               Accept
             </button>
@@ -102,6 +103,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           <iframe
             src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
           />
+          <p>{hackerText}</p>
         </AccordionDetails>
       </Accordion>
     </div>
