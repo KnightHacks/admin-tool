@@ -10,7 +10,7 @@ interface HackerRenderProps {
   data: HackerData;
 }
 
-function acceptHacker(email: string) {
+function acceptHacker(email: string): void {
   const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
   fetch(acceptURL, {
     method: 'PUT',
@@ -73,7 +73,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
             <button
               className="button is-success"
               style={{ marginRight: 5 }}
-              onClick={acceptHacker(data.email)}
+              onClick={() => acceptHacker(data.email)}
             >
               Accept
             </button>
@@ -82,7 +82,6 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           <iframe
             src={`https://api.knighthacks.org/api/hackers//${data.email}/resume/`}
           />
-          ;
         </AccordionDetails>
       </Accordion>
     </div>
