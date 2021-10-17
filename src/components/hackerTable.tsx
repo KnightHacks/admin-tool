@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import HackerRender from './hacker';
 interface HackerData {
-  hackers: [begginer: boolean];
+  beginner: boolean;
 }
 export default function HackerTable() {
-  const [hackerResponse, setHacker] = useState({ HackerData: Object });
+  const [hackerResponse, setHacker] = useState({ HackerData: [] });
   useEffect(() => {
     const hackerURL =
       'https://api.knighthacks.org/api/hackers/get_all_hackers/';
