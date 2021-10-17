@@ -9,7 +9,7 @@ export default function HackerTable() {
     fetch(hackerURL, {
       method: 'GET',
       credentials: 'include',
-    }).then((response) => console.log(response));
+    }).then((response) => console.log(response.json()));
   }, []);
   // console.log(hacker);
   // const dummyData: HackerData[] = [
