@@ -7,10 +7,10 @@ export default function LoginPage(): JSX.Element {
   const [statusCode, setStatusCode] = useState(0);
   const [StatusMessage, setStatusMessage] = useState('');
   const history = useHistory();
-  function UsernameCapture(event: any) {
+  function UsernameCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setUsername(event.target.value);
   }
-  function PasswordCapture(event: any) {
+  function PasswordCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
   }
   function Login() {
