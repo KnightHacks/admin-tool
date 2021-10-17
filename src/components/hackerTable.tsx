@@ -15,7 +15,7 @@ export default function HackerTable() {
   return (
     <div>
       {hackerData.map((hacker) => (
-        <HackerRender key={hacker.email} data={hacker} />
+        <HackerRender key={hacker['email']} data={hacker} />
       ))}
     </div>
   );
