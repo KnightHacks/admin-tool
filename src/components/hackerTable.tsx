@@ -22,6 +22,7 @@ export default function HackerTable(): JSX.Element {
     history.push('/');
   }
   const [hackers, setHacker] = useState<Array<Hacker>>([]);
+  console.log(hackers[0]);
   useEffect(() => {
     const hackerURL =
       'https://api.knighthacks.org/api/hackers/get_all_hackers/';
