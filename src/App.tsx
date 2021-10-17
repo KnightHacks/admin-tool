@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter, useHistory } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import LoginPage from './pages/Login';
 import HackerPage from './pages/HackerPage';

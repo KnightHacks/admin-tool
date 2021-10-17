@@ -1,7 +1,5 @@
-import { render } from '@testing-library/react';
-import React, { useState, Component } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { HackerData } from '@knighthacks/hackathon';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
 export default function LoginPage() {
   const [password, setPassword] = useState('');
