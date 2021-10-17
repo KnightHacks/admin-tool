@@ -1,32 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Stats from './stats';
-export interface StatsInterface {
-  statsName: string;
-  statsNumber: number;
-  colorOfCard: string;
-  textAlign: string;
+interface StatsInterface {
+  hackers: number;
+  sponsors: number;
+  total: number;
 }
 export default function StatsParent(): JSX.Element {
-  const dummyData: StatsInterface[] = [
-    {
-      statsName: 'Hackers',
-      statsNumber: 15,
-      colorOfCard: 'red',
-      textAlign: 'left',
-    },
-    {
-      statsName: 'Sponsors',
-      statsNumber: 28,
-      colorOfCard: 'purple',
-      textAlign: 'center',
-    },
-    {
-      statsName: 'Events',
-      statsNumber: 17,
-      colorOfCard: 'blue',
-      textAlign: 'right',
-    },
-  ];
+  const [stats, setStats] = useState<StatsInterface>(Object);
+  const statsURL = 'https://api.knighthacks.org/api​/stats​/user_count​/';
+  fetch(statsURL, {
+    method: 'GET',
+    credentials: 'include',
+  })
+    .then((response) => response.json())
+    .then((data) => setStats(data))
+    .catch((err) => {
+      throw new Error(err);
+    });
+  console.log(stats);
+  console.log(stats.hackers);
   return (
     <div
       style={{
@@ -35,9 +27,9 @@ export default function StatsParent(): JSX.Element {
         alignItems: 'center',
       }}
     >
-      {dummyData.map((stat) => (
+      {/* {dummyData.map((stat) => (
         <Stats key={stat.statsName} data={stat} />
-      ))}
+      ))} */}
     </div>
   );
 }
