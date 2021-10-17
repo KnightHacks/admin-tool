@@ -35,7 +35,9 @@ export default function HackerTable(): JSX.Element {
   }, []);
   return (
     <div>
-      <button onClick={() => Logout()}>Logout</button>
+      <button className="button is-danger" onClick={() => Logout()}>
+        Logout
+      </button>
       {hackers.map((hacker) => (
         <HackerRender key={hacker['email']} data={hacker} />
       ))}
