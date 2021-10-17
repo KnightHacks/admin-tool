@@ -60,6 +60,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           <Typography>
             <p>Beginner: {data.beginner ? 'Yes' : 'No'}</p>
             <p>Email: {data.email}</p>
+            <p>Acceptance status: {data.isaccepted}</p>
           </Typography>
           <div style={{ margin: 10 }}>
             <button
