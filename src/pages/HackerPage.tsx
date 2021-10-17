@@ -4,7 +4,7 @@ export default function HackerPage(): JSX.Element {
   return (
     <div>
       <p>Welcome to the hacker page!</p>
-      <HackerTable />;
+      <HackerTable />
     </div>
   );
 }

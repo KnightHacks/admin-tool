@@ -5,7 +5,7 @@ export default function HackerTable() {
   const [hacker, setHacker] = useState([]);
   useEffect(() => {
     const hackerURL =
-      'https://api.knighthacks.org/api/hackers/get_all_hackers/';
+      'https://stagingapi.knighthacks.org/api/hackers/get_all_hackers/';
     fetch(hackerURL, {
       method: 'GET',
       credentials: 'include',

@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { useState, Component } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
 export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -14,13 +15,14 @@ export default function LoginPage() {
     setPassword(event.target.value);
   }
   function Login() {
-    const authURL = 'https://api.knighthacks.org/api/auth/login/';
+    const authURL = 'https://stagingapi.knighthacks.org/api/auth/login/';
     const loginData = {
       password: password,
       username: username,
     };
     fetch(authURL, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'content-type': 'application/json',
       },
@@ -30,6 +32,7 @@ export default function LoginPage() {
       .catch((err) => {
         throw new Error(err);
       });
+    console.log(statusCode);
     switch (statusCode) {
       case 200:
         setStatusMessage('Now logging in!');
@@ -44,10 +47,15 @@ export default function LoginPage() {
       case 403:
         setStatusMessage('Forbidden');
         break;
+      case 0:
+        setStatusMessage('Request has not fully finished, try again!');
+        break;
     }
   }
   return (
     <div>
+      <img src={KnightHacksLogo} alt="Knight Hacks Logo" />
+      <p>Login</p>
       <p>{StatusMessage}</p>
       <input type="text" placeholder="Username" onChange={UsernameCapture} />
       <input
