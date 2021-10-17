@@ -13,6 +13,9 @@ export default function HackerTable() {
       .then((data) => setHacker(data));
   }, []);
   console.log(hackerData);
+  hackerData.map((hacker) => {
+    console.log('data is: ', hacker);
+  });
   return (
     <div>
       {hackerData.map((hacker) => (
