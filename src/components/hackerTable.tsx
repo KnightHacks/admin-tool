@@ -12,7 +12,7 @@ interface Hacker {
 export default function HackerTable(): JSX.Element {
   const history = useHistory();
   function Logout() {
-    const logoutURL = 'https://api.knighthacks.org/api/auth/logout/';
+    const logoutURL = 'https://api.knighthacks.org/api/auth/signout/';
     fetch(logoutURL, {
       method: 'GET',
       credentials: 'include',

@@ -16,29 +16,6 @@ interface HackerRenderProps {
   data: Hacker;
 }
 
-// type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
-// function hackerState(data: Hacker): HackerStatusState {
-//   console.log(data);
-//   if (data.isaccepted === false && data.rsvp_status === true) {
-//     return 'Pending';
-//   } else if (data.isaccepted === true && data.rsvp_status === true) {
-//     return 'Accepted';
-//   } else {
-//     return 'Declined';
-//   }
-// }
-
-// function colorStatus(status: string) {
-//   switch (status) {
-//     case 'Pending':
-//       return 'warning';
-//     case 'Accepted':
-//       return 'success';
-//     case 'Declined':
-//       return 'danger';
-//   }
-// }
-
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
   const [hackerText, setHackerText] = useState('');
   function acceptHacker(data: Hacker, email: string): void {
@@ -57,18 +34,15 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
       }).catch((err) => {
         throw new Error(err);
       });
-      setHackerText(data.first_name + data.last_name + ' has been accepted!');
+      setHackerText(
+        data.first_name + ' ' + data.last_name + ' has been accepted!',
+      );
     } else {
       setHackerText(
-        data.first_name + data.last_name + ' has already been accepted!',
+        data.first_name + ' ' + data.last_name + ' has already been accepted!',
       );
     }
   }
-  // const [status, setStatus] = useState<HackerStatusState>('Pending');
-  // useEffect(() => {
-  //   const updatedStatus = hackerState(data);
-  //   setStatus(updatedStatus);
-  // }, []);
 
   return (
     <div>
