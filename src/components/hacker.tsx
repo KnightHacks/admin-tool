@@ -59,10 +59,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
         <AccordionDetails>
           <Typography>
             <p>Beginner: {data.beginner ? 'Yes' : 'No'}</p>
-            {/* <p>
-              Status:
-              <span className={`tag is-${colorStatus(status)}`}>{status}</span>
-            </p> */}
+            <p>Email: {data.email}</p>
           </Typography>
           <div style={{ margin: 10 }}>
             <button
