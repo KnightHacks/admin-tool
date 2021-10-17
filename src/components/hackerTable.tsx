@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import HackerRender from './hacker';
 interface Hacker {
   email: string;
-  is_accepted: boolean;
+  isaccepted: boolean;
   rsvp_status: boolean;
   first_name: string;
   last_name: string;

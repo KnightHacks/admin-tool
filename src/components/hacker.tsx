@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 interface Hacker {
   email: string;
-  is_accepted: boolean;
+  isaccepted: boolean;
   rsvp_status: boolean;
   first_name: string;
   last_name: string;
@@ -28,9 +28,9 @@ function acceptHacker(email: string): void {
 
 type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
 function hackerState(data: Hacker): HackerStatusState {
-  if (data.is_accepted === false && data.rsvp_status === true) {
+  if (data.isaccepted === false && data.rsvp_status === true) {
     return 'Pending';
-  } else if (data.is_accepted === true && data.rsvp_status === true) {
+  } else if (data.isaccepted === true && data.rsvp_status === true) {
     return 'Accepted';
   } else {
     return 'Declined';
