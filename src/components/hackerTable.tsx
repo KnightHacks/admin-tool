@@ -15,7 +15,8 @@ export default function HackerTable() {
       .then((response) => response.json())
       .then((data) => setHacker(data));
   }, []);
-  console.log(typeof hackerResponse['hackers'][0]);
+  console.log(hackerResponse);
+  console.log(typeof hackerResponse['hackers']);
   return (
     <div>
       {/* {hackerResponse['hackers'].map((hacker) => (
