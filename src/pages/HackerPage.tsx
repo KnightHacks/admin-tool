@@ -1,6 +1,6 @@
 import React from 'react';
 import HackerTable from '../components/hackerTable';
-import StatsComponent from '../components/Stats';
+import StatsComponent from '../components/StatsComponent';
 export default function HackerPage(): JSX.Element {
   return (
     <div>
