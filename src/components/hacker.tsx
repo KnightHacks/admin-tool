@@ -44,7 +44,6 @@ function colorStatus(status: string) {
 
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
   const [status, setStatus] = useState<HackerStatusState>('Pending');
-  const [resume, setResume] = useState('');
   useEffect(() => {
     const updatedStatus = hackerState(data);
     setStatus(updatedStatus);
@@ -59,7 +58,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           id="panel1a-header"
         >
           <h1 style={{ fontWeight: 700 }}>
-            {data.first_name} - {data.last_name}
+            {data.firstName} - {data.lastName}
           </h1>
         </AccordionSummary>
         <AccordionDetails>
