@@ -5,11 +5,13 @@ export default function HackerTable() {
   const [hacker, setHacker] = useState([]);
   useEffect(() => {
     const hackerURL =
-      'https://stagingapi.knighthacks.org/api/hackers/get_all_hackers/';
+      'https://api.knighthacks.org/api/hackers/get_all_hackers/';
     fetch(hackerURL, {
       method: 'GET',
       credentials: 'include',
-    }).then((response) => console.log(response.json()));
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }, []);
   // console.log(hacker);
   // const dummyData: HackerData[] = [

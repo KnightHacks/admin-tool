@@ -15,7 +15,7 @@ export default function LoginPage() {
     setPassword(event.target.value);
   }
   function Login() {
-    const authURL = 'https://stagingapi.knighthacks.org/api/auth/login/';
+    const authURL = 'https://api.knighthacks.org/api/auth/login/';
     const loginData = {
       password: password,
       username: username,
