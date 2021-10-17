@@ -15,19 +15,33 @@ interface Hacker {
 interface HackerRenderProps {
   data: Hacker;
 }
-
-function acceptHacker(email: string): void {
-  const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
-  fetch(acceptURL, {
-    method: 'PUT',
-    credentials: 'include',
-  }).catch((err) => {
-    throw new Error(err);
-  });
+const [hackerText, setHackerText] = useState('');
+function acceptHacker(data: Hacker, email: string): void {
+  if (data.isaccepted === false) {
+    const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
+    fetch(acceptURL, {
+      method: 'PUT',
+      credentials: 'include',
+    }).catch((err) => {
+      throw new Error(err);
+    });
+    const sendEmailURL = `https://api.knighthacks.org/api/email/verify/${email}/`;
+    fetch(sendEmailURL, {
+      method: 'POST',
+      credentials: 'include',
+    }).catch((err) => {
+      throw new Error(err);
+    });
+  } else {
+    setHackerText(
+      data.first_name + data.last_name + ' has already been sent the email!',
+    );
+  }
 }
 
 type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
 function hackerState(data: Hacker): HackerStatusState {
+  console.log(data);
   if (data.isaccepted === false && data.rsvp_status === true) {
     return 'Pending';
   } else if (data.isaccepted === true && data.rsvp_status === true) {
