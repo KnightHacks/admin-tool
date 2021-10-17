@@ -15,6 +15,7 @@ export default function HackerTable(): JSX.Element {
     const logoutURL = 'https://api.knighthacks.org/api/auth/logout/';
     fetch(logoutURL, {
       method: 'GET',
+      credentials: 'include',
     }).catch((err) => {
       throw new Error(err);
     });
