@@ -1,4 +1,3 @@
-import { HackerData } from '@knighthacks/hackathon';
 import React, { useState, useEffect } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';

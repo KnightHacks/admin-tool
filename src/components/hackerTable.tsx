@@ -9,10 +9,10 @@ interface Hacker {
   last_name: string;
   beginner: boolean;
 }
-export default function HackerTable() {
+export default function HackerTable(): JSX.Element {
   const history = useHistory();
   function Logout() {
-    const logoutURL = 'https://api.knighthacks.org/api/auth/login/';
+    const logoutURL = 'https://api.knighthacks.org/api/auth/logout/';
     fetch(logoutURL, {
       method: 'GET',
     }).catch((err) => {
@@ -31,9 +31,6 @@ export default function HackerTable() {
       .then((response) => response.json())
       .then((data) => setHacker(data.hackers ?? []));
   }, []);
-  console.log(hackers[0]);
-  console.log('first object is: ', hackers[0]);
-  console.log(typeof hackers[0]);
   return (
     <div>
       <button onClick={() => Logout()}>Logout</button>

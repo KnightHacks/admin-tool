@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
-export default function LoginPage() {
+export default function LoginPage(): JSX.Element {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [statusCode, setStatusCode] = useState(0);
