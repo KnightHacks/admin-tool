@@ -5,9 +5,16 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+interface Hacker {
+  email: string;
+  is_accepted: boolean;
+  rsvp_status: boolean;
+  first_name: string;
+  last_name: string;
+  beginner: boolean;
+}
 interface HackerRenderProps {
-  data: HackerData;
+  data: Hacker;
 }
 
 function acceptHacker(email: string): void {
@@ -21,10 +28,10 @@ function acceptHacker(email: string): void {
 }
 
 type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
-function hackerState(data: HackerData): HackerStatusState {
-  if (data.isAccepted === false && data.rsvpStatus === true) {
+function hackerState(data: Hacker): HackerStatusState {
+  if (data.is_accepted === false && data.rsvp_status === true) {
     return 'Pending';
-  } else if (data.isAccepted === true && data.rsvpStatus === true) {
+  } else if (data.is_accepted === true && data.rsvp_status === true) {
     return 'Accepted';
   } else {
     return 'Declined';
@@ -58,7 +65,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           id="panel1a-header"
         >
           <h1 style={{ fontWeight: 700 }}>
-            {data.firstName} - {data.lastName}
+            {data.first_name} - {data.last_name}
           </h1>
         </AccordionSummary>
         <AccordionDetails>

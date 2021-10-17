@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { API, HackerData } from '@knighthacks/hackathon';
 import HackerRender from './hacker';
-interface HackerData {
+interface Hacker {
+  email: string;
+  is_accepted: boolean;
+  rsvp_status: boolean;
+  first_name: string;
+  last_name: string;
   beginner: boolean;
 }
 export default function HackerTable() {
-  const [hackerResponse, setHacker] = useState(Object);
+  const [hackers, setHacker] = useState<Array<Hacker>>([]);
   useEffect(() => {
     const hackerURL =
       'https://api.knighthacks.org/api/hackers/get_all_hackers/';
@@ -14,16 +18,16 @@ export default function HackerTable() {
       credentials: 'include',
     })
       .then((response) => response.json())
-      .then((data) => setHacker(data));
+      .then((data) => setHacker(data.hackers ?? []));
   }, []);
-  console.log(hackerResponse['hackers']);
-  console.log('first object is: ', hackerResponse[0]);
-  console.log(typeof hackerResponse[0]);
+  console.log(hackers[0]);
+  console.log('first object is: ', hackers[0]);
+  console.log(typeof hackers[0]);
   return (
     <div>
-      {/* {hackerResponse.map((hacker) => (
+      {hackers.map((hacker) => (
         <HackerRender key={hacker['email']} data={hacker} />
-      ))} */}
+      ))}
     </div>
   );
 }
