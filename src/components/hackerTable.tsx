@@ -18,9 +18,9 @@ export default function HackerTable() {
   console.log(typeof hackerResponse['hackers'][0]);
   return (
     <div>
-      {hackerResponse['hackers'].map((hacker) => (
+      {/* {hackerResponse['hackers'].map((hacker) => (
         <HackerRender key={hacker['email']} data={hacker} />
-      ))}
+      ))} */}
     </div>
   );
 }
