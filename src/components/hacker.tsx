@@ -7,10 +7,18 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface HackerRenderProps {
-  data: HackerData;
+  data: [];
 }
 
-type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
+function acceptHacker(email: string) {
+  const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
+  fetch(acceptURL, {
+    method: 'PUT',
+    credentials: 'include',
+  }).catch((err) => {
+    throw new Error(err);
+  });
+}
 
 function hackerState(data: HackerData): HackerStatusState {
   if (data.isAccepted === false && data.rsvpStatus === true) {
@@ -50,20 +58,23 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           id="panel1a-header"
         >
           <h1 style={{ fontWeight: 700 }}>
-            {data.firstName} - {data.lastName}
+            {data.first_name} - {data.last_name}
           </h1>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
             <p>Beginner: {data.beginner ? 'Yes' : 'No'}</p>
-            <p>Pronouns: {data.pronouns}</p>
             <p>
               Status:
               <span className={`tag is-${colorStatus(status)}`}>{status}</span>
             </p>
           </Typography>
           <div style={{ margin: 10 }}>
-            <button className="button is-success" style={{ marginRight: 5 }}>
+            <button
+              className="button is-success"
+              style={{ marginRight: 5 }}
+              onClick={acceptHacker(data.email)}
+            >
               Accept
             </button>
             <button className="button is-danger">Decline</button>
