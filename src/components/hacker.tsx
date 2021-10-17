@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 interface HackerRenderProps {
-  data: [];
+  data: HackerData;
 }
 
 function acceptHacker(email: string) {
@@ -44,7 +44,7 @@ function colorStatus(status: string) {
 
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
   const [status, setStatus] = useState<HackerStatusState>('Pending');
-
+  const [resume, setResume] = useState('');
   useEffect(() => {
     const updatedStatus = hackerState(data);
     setStatus(updatedStatus);
@@ -80,6 +80,10 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
             </button>
             <button className="button is-danger">Decline</button>
           </div>
+          <iframe
+            src={`https://api.knighthacks.org/api/hackers//${data.email}/resume/`}
+          />
+          ;
         </AccordionDetails>
       </Accordion>
     </div>
