@@ -31,7 +31,6 @@ export default function LoginPage(): JSX.Element {
       .catch((err) => {
         throw new Error(err);
       });
-    console.log(statusCode);
     switch (statusCode) {
       case 200:
         setStatusMessage('Now logging in!');
