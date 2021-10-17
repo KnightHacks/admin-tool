@@ -20,6 +20,7 @@ function acceptHacker(email: string) {
   });
 }
 
+type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
 function hackerState(data: HackerData): HackerStatusState {
   if (data.isAccepted === false && data.rsvpStatus === true) {
     return 'Pending';
