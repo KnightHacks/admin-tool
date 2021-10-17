@@ -13,14 +13,9 @@ export default function HackerTable() {
       .then((data) => setHacker(data));
   }, []);
   console.log(hackerData);
-  console.log(typeof hackerData);
-  console.log(hackerData[0]);
-  hackerData.map((hacker) => {
-    console.log('data is: ', hacker);
-  });
   return (
     <div>
-      {hackerData.map((hacker) => (
+      {hackerData['hackers'].map((hacker) => (
         <HackerRender key={hacker['email']} data={hacker} />
       ))}
     </div>
