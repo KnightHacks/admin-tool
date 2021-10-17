@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -14,30 +14,6 @@ interface Hacker {
 }
 interface HackerRenderProps {
   data: Hacker;
-}
-const [hackerText, setHackerText] = useState('');
-function acceptHacker(data: Hacker, email: string): void {
-  if (data.isaccepted === false) {
-    const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
-    fetch(acceptURL, {
-      method: 'PUT',
-      credentials: 'include',
-    }).catch((err) => {
-      throw new Error(err);
-    });
-    const sendEmailURL = `https://api.knighthacks.org/api/email/verify/${email}/`;
-    fetch(sendEmailURL, {
-      method: 'POST',
-      credentials: 'include',
-    }).catch((err) => {
-      throw new Error(err);
-    });
-    setHackerText(data.first_name + data.last_name + ' has been accepted!');
-  } else {
-    setHackerText(
-      data.first_name + data.last_name + ' has already been accepted!',
-    );
-  }
 }
 
 // type HackerStatusState = 'Pending' | 'Accepted' | 'Declined';
@@ -64,6 +40,30 @@ function acceptHacker(data: Hacker, email: string): void {
 // }
 
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
+  const [hackerText, setHackerText] = useState('');
+  function acceptHacker(data: Hacker, email: string): void {
+    if (data.isaccepted === false) {
+      const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
+      fetch(acceptURL, {
+        method: 'PUT',
+        credentials: 'include',
+      }).catch((err) => {
+        throw new Error(err);
+      });
+      const sendEmailURL = `https://api.knighthacks.org/api/email/verify/${email}/`;
+      fetch(sendEmailURL, {
+        method: 'POST',
+        credentials: 'include',
+      }).catch((err) => {
+        throw new Error(err);
+      });
+      setHackerText(data.first_name + data.last_name + ' has been accepted!');
+    } else {
+      setHackerText(
+        data.first_name + data.last_name + ' has already been accepted!',
+      );
+    }
+  }
   // const [status, setStatus] = useState<HackerStatusState>('Pending');
   // useEffect(() => {
   //   const updatedStatus = hackerState(data);
