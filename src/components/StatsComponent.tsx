@@ -6,10 +6,13 @@ interface StatsInterface {
 }
 export default function StatsComponent(): JSX.Element {
   const [stats, setStats] = useState<StatsInterface>(Object);
-  const statsURL = 'https://api.knighthacks.org/api​/stats​/user_count​/';
+  const statsURL = 'https://api.knighthacks.org/api/stats/user_count/';
   fetch(statsURL, {
     method: 'GET',
     credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
   })
     .then((response) => response.json())
     .then((data) => setStats(data))
