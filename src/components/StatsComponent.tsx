@@ -23,7 +23,8 @@ export default function StatsComponent(): JSX.Element {
   }, []);
   return (
     <div>
-      <p>Total hackers: {stats.hackers}</p>
+      <p>Total Hackers: {stats.hackers}</p>
+      <p>Total Sponsors: {stats.sponsors}</p>
     </div>
   );
 }
