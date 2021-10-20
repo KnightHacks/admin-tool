@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
+import * as config from '../config.json';
 export default function LoginPage(): JSX.Element {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -14,23 +15,23 @@ export default function LoginPage(): JSX.Element {
     setPassword(event.target.value);
   }
   function Login() {
-    const authURL = 'https://api.knighthacks.org/api/auth/login/';
-    const loginData = {
-      password: password,
-      username: username,
-    };
-    fetch(authURL, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(loginData),
-    })
-      .then((response) => setStatusCode(response.status))
-      .catch((err) => {
-        throw new Error(err);
-      });
+    // const authURL = 'https://api.knighthacks.org/api/auth/login/';
+    // const loginData = {
+    //   password: password,
+    //   username: username,
+    // };
+    // fetch(authURL, {
+    //   method: 'POST',
+    //   credentials: 'include',
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify(loginData),
+    // })
+    //   .then((response) => setStatusCode(response.status))
+    //   .catch((err) => {
+    //     throw new Error(err);
+    //   });
     switch (statusCode) {
       case 200:
         setStatusMessage('Now logging in!');
@@ -61,7 +62,7 @@ export default function LoginPage(): JSX.Element {
         placeholder="Password"
         onChange={PasswordCapture}
       />
-      <button onClick={Login}>Log on</button>
+      <a href={config.redirect_url}>Log on</a>
     </div>
   );
 }
