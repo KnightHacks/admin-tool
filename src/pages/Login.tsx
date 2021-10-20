@@ -51,17 +51,39 @@ export default function LoginPage(): JSX.Element {
     }
   }
   return (
-    <div>
-      <img src={KnightHacksLogo} alt="Knight Hacks Logo" />
-      <p>Login</p>
-      <p>{StatusMessage}</p>
-      <input type="text" placeholder="Username" onChange={UsernameCapture} />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={PasswordCapture}
-      />
-      <button onClick={Login}>Log on</button>
+    <div className="w-[calc(100%-10px)] sm:w-1/4 bg-gray-200 rounded-lg px-8 py-4">
+      <div className="flex flex-col items-center space-y-8">
+        <img src={KnightHacksLogo} alt="Knight Hacks Logo" className="w-3/4" />
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={UsernameCapture}
+          className={`shadow appearance-none border ${
+            StatusMessage === '' ? 'border-gray-500' : ' border-red-500'
+          } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-200`}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={PasswordCapture}
+          className={`shadow appearance-none border ${
+            StatusMessage === '' ? 'border-gray-500' : ' border-red-500'
+          } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-200`}
+        />
+        <button
+          onClick={Login}
+          className="bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 px-4 py-2 w-full rounded-md"
+        >
+          Sign In
+        </button>
+      </div>
+      <p
+        className={`${
+          StatusMessage === '' ? 'hidden' : 'block'
+        } text-red-500 mt-2 text-center`}
+      >
+        {StatusMessage}
+      </p>
     </div>
   );
 }
