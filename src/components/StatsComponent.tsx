@@ -7,6 +7,7 @@ interface StatsInterface {
 export default function StatsComponent(): JSX.Element {
   const [stats, setStats] = useState<StatsInterface>(Object);
   const statsURL = 'https://api.knighthacks.org/api/stats/user_count/';
+  /*
   useEffect(() => {
     fetch(statsURL, {
       method: 'GET',
@@ -21,6 +22,7 @@ export default function StatsComponent(): JSX.Element {
         throw new Error(err);
       });
   }, []);
+  */
   return (
     <div>
       <p>Total Hackers: {stats.hackers}</p>
