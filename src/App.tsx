@@ -1,8 +1,10 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import './App.scss';
 import LoginPage from './pages/Login';
 import HackerPage from './pages/HackerPage';
+import SponsorPage from './pages/SponsorsPage';
+
 function App(): JSX.Element {
   return (
     <div className="App">
@@ -10,9 +12,15 @@ function App(): JSX.Element {
         <p>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" component={LoginPage} />
+              <Route exact path="/">
+                <Redirect to="/Sponsors" />
+                {/*<LoginPage />*/}
+              </Route>
               <Route path="/Hackers">
                 <HackerPage />
+              </Route>
+              <Route path="/Sponsors">
+                <SponsorPage />
               </Route>
             </Switch>
           </BrowserRouter>

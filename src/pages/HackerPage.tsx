@@ -1,7 +1,7 @@
 import React from 'react';
-import HackerTable from '../components/hackerTable';
+import HackerTable from '../components/hackers/hackerTable';
 import StatsComponent from '../components/StatsComponent';
-import SponsorsComponent from '../components/SponsorsComponent';
+import SponsorsComponent from '../components/sponsors/sponsorSubmission';
 export default function HackerPage(): JSX.Element {
   return (
     <div>

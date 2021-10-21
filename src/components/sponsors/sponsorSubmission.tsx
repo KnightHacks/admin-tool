@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-export default function SponsorsComponent(): JSX.Element {
+export default function SponsorsSubmission(): JSX.Element {
   const [sponsorName, setSponsorName] = useState('');
   const [sponsorTier, setSponsorTier] = useState('');
   const [description, setDescription] = useState('');
