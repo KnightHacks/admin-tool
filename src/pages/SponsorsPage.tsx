@@ -1,12 +1,13 @@
 import React from 'react';
+import SponsorsSubmission from '../components/sponsors/sponsorSubmission';
 import SponsorTable from '../components/sponsors/sponsorTable';
-import SponsorSubmissionBar from '../components/sponsors/sponsorSubmission';
+import '../components/sponsors/sponsorPage.scss';
 
 export default function SponsorPage(): JSX.Element {
   return (
-    <div>
+    <div className="sponsorPageContainer">
       <p>Welcome to the Sponsors page!</p>
-      <SponsorSubmissionBar />
+      <SponsorsSubmission />
       <SponsorTable />
     </div>
   );

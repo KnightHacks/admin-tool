@@ -54,19 +54,24 @@ export default function SponsorsSubmission(): JSX.Element {
     }
   }
   return (
-    <div>
+    <div className="barContainer">
       <p>{statusText}</p>
-      <label>Subscription Tier</label>
-      <input type="text" onChange={TierCapture} />
-      <label>Sponsor Name</label>
-      <input type="text" onChange={SponsorNameCapture} />
-      <label>Description</label>
-      <input type="text" onChange={DescriptionCapture} />
-      <label>Logo</label>
-      <input type="text" onChange={LogoCapture} />
-      <label>Linkedin</label>
-      <input type="text" onChange={LinkedinCapture} />
-      <button onClick={CreateSponsor}>Submit</button>
+      <div className="upperFieldContainer">
+        <label>Sponsor Name</label>
+        <input type="text" onChange={SponsorNameCapture} />
+        <label>Description</label>
+        <input type="text" onChange={DescriptionCapture} />
+        <label>Linkedin</label>
+        <input type="text" onChange={LinkedinCapture} />
+      </div>
+
+      <div className="lowerFieldContainer">
+        <label>Subscription Tier</label>
+        <input type="text" onChange={TierCapture} />
+        <label>Logo</label>
+        <input type="text" onChange={LogoCapture} />
+        <button onClick={CreateSponsor}>Submit</button>
+      </div>
     </div>
   );
 }

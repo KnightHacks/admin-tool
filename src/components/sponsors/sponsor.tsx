@@ -5,7 +5,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ReactComponent as DefaultLogo } from '../../assets/sponsor-logo-default.svg';
-import './sponsorBar.scss';
+import './sponsorPage.scss';
 
 export enum SponsorTier {
   Diamond = 4,
@@ -19,9 +19,8 @@ export enum SponsorTier {
 export interface Sponsor {
   name: string;
   description: string;
-  subscription_tier: SponsorTier;
-  //logo: string; // TODO: Store SVG here
-  linkedin: string;
+  linkedIn: string;
+  tier: SponsorTier;
 }
 
 export interface SponsorRenderProps {
@@ -57,48 +56,14 @@ export function SponsorRender({ data }: SponsorRenderProps): JSX.Element {
           <DefaultLogo className="sponsorLogo" />
           <h1 style={{ fontWeight: 700 }}>
             {data.name}
-            {` (${getSponsorTierString(data.subscription_tier)})`}
+            {` (${getSponsorTierString(data.tier)})`}
           </h1>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>{data.description}</Typography>
-          <Typography>{data.linkedin}</Typography>
+          <Typography>{data.linkedIn}</Typography>
         </AccordionDetails>
       </Accordion>
     </div>
   );
 }
-
-/*
-<Accordion>
-<AccordionSummary
-    expandIcon={<ExpandMoreIcon />}
-    aria-controls="panel1a-content"
-    id="panel1a-header"
->
-    <h1 style={{ fontWeight: 700 }}>
-    {data.first_name} - {data.last_name}
-    </h1>
-</AccordionSummary>
-<AccordionDetails>
-    <Typography>
-    <p>Beginner: {data.beginner ? 'Yes' : 'No'}</p>
-    <p>Email: {data.email}</p>
-    </Typography>
-    <div style={{ margin: 10 }}>
-    <button
-        className="button is-success"
-        style={{ marginRight: 5 }}
-        onClick={() => acceptHacker(data, data.email)}
-    >
-        Accept
-    </button>
-    <button className="button is-danger">Decline</button>
-    </div>
-    <iframe
-    src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
-    />
-    <p>{hackerText}</p>
-</AccordionDetails>
-</Accordion>
-*/

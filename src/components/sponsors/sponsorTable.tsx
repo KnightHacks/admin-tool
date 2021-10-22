@@ -8,7 +8,7 @@ import {
   getSponsorTierString,
 } from './sponsor';
 
-export default function HackerTable(): JSX.Element {
+export default function SponsorTable({}): JSX.Element {
   const history = useHistory();
   const [sponsors, setSponsors] = useState<Array<Sponsor>>([]);
 
@@ -18,8 +18,8 @@ export default function HackerTable(): JSX.Element {
       name: 'Demo Sponsor',
       description:
         'This is not a real sponsor, but is rather being used to determine if this would work.',
-      subscription_tier: SponsorTier.Gold,
-      linkedin: 'https://www.linkedin.com/in/elijahmsmith/',
+      tier: SponsorTier.Gold,
+      linkedIn: 'https://www.linkedin.com/in/elijahmsmith/',
     });
 
     setSponsors(sponsorsCopy);

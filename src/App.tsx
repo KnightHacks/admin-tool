@@ -9,22 +9,20 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/">
-                <Redirect to="/Sponsors" />
-                {/*<LoginPage />*/}
-              </Route>
-              <Route path="/Hackers">
-                <HackerPage />
-              </Route>
-              <Route path="/Sponsors">
-                <SponsorPage />
-              </Route>
-            </Switch>
-          </BrowserRouter>
-        </p>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/Sponsors" />
+              {/*<LoginPage />*/}
+            </Route>
+            <Route path="/Hackers">
+              <HackerPage />
+            </Route>
+            <Route path="/Sponsors">
+              <SponsorPage />
+            </Route>
+          </Switch>
+        </BrowserRouter>
       </header>
     </div>
   );
