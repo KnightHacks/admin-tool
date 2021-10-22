@@ -18,6 +18,36 @@ interface HackerRenderProps {
 
 export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
   const [hackerText, setHackerText] = useState('');
+
+  function showStatus(status: boolean, accepted: boolean) {
+    if (!accepted) {
+      return (
+        <div className="w-full flex align-center justify-end px-5">
+          <div className="flex h-1/2 align-center justify-center text-center rounded-xl py-3 px-8 font-medium italic text-red-900 bg-red-300 ">
+            Review{' '}
+          </div>
+        </div>
+      );
+    }
+    if (status) {
+      return (
+        <div className="w-full flex align-center justify-end px-5">
+          <div className="flex h-1/2 align-center justify-center text-center rounded-xl py-3 px-8 font-medium italic text-green-900 bg-green-300 ">
+            {' '}
+            Confirmed{' '}
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="w-full flex align-center justify-end px-5">
+        <div className="flex h-1/2 align-center justify-center text-center rounded-xl py-3 px-8 font-medium italic text-yellow-900 bg-yellow-300 backdrop-opacity-25">
+          {' '}
+          Pending{' '}
+        </div>
+      </div>
+    );
+  }
   function acceptHacker(data: Hacker, email: string): void {
     if (data.isaccepted === false) {
       const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
@@ -52,9 +82,18 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <h1 style={{ fontWeight: 700 }}>
-            {data.first_name} - {data.last_name}
-          </h1>
+          <div className="h-24 px-4 grid grid-cols-2 w-full items-center justify-center">
+            <div className="flex flex-col  ">
+              <text className="font-bold text-2xl">
+                {' '}
+                {data.first_name} {'\t'} {data.last_name}{' '}
+              </text>
+              <text className="text-medium italic text-gray-400">
+                X days ago
+              </text>
+            </div>
+            {showStatus(data.rsvp_status, data.isaccepted)}
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
