@@ -26,14 +26,14 @@ export default function StatsComponent(): JSX.Element {
       <div className="px-5 rounded-lg bg-red-500  items-center h-48 w-48 md:h-72 md:w-72 justify-center flex flex-col">
         <div className="text-6xl md:text-8xl font-bold text-white">
           {' '}
-          {stats.hackers}{' '}
+          {stats.hackers ?? 'XX'}{' '}
         </div>
         <p className="text-xl md:text-3xl text-white"> Hackers </p>
       </div>
       <div className="px-5 rounded-lg bg-blue-500 items-center h-48 w-48 md:h-72 md:w-72 justify-center flex flex-col">
         <div className="text-6xl md:text-8xl font-bold text-white">
           {' '}
-          {stats.sponsors}{' '}
+          {stats.sponsors ?? 'XX'}{' '}
         </div>
         <p className="text-xl md:text-3xl text-white"> Sponsors </p>
       </div>
