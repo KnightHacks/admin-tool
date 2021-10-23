@@ -134,11 +134,11 @@ export default function HackerTable(): JSX.Element {
   }, []);
   return (
     <div>
-      <nav className="fixed top-0 z-10 w-screen grid grid-cols-2 bg-gray-700 drop-shadow-lg mb-3">
+      <nav className="fixed top-0 z-10 w-screen grid grid-cols-2 bg-dark-gray drop-shadow-lg mb-3">
         <div className="flex justify-start items-center mx-8 my-4">
           <a
             className="text-sm font-bold leading-relaxed inline-block  py-2 whitespace-nowrap uppercase text-white"
-            href="#pablo"
+            href="/"
           >
             <img className="h-10 w-auto object-contain" src={KnightHacksLogo} />
           </a>
@@ -152,8 +152,8 @@ export default function HackerTable(): JSX.Element {
           </button>
         </div>
       </nav>
-      <div className="h-screen mt-24 w-full bg-gray-800 px-5 py-8">
-        <div className="flex flex-col bg-gray-800 mx-0 px-0 items-center justify-center gap-3">
+      <div className="h-screen mt-24 w-full px-5 py-8">
+        <div className="flex flex-col mx-0 px-0 items-center justify-center gap-3">
           {sampleHackers.map((hacker) => (
             <HackerRender key={hacker['email']} data={hacker} />
           ))}
