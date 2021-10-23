@@ -4,6 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { SocialDistance } from '@mui/icons-material';
 interface Hacker {
   email: string;
   isaccepted: boolean;
@@ -11,6 +12,19 @@ interface Hacker {
   first_name: string;
   last_name: string;
   beginner: boolean;
+  date: string;
+  edu_info: {
+    college: string;
+    graduation_date: string;
+    level_of_study: string;
+    major: string;
+  };
+  socials: {
+    github: string;
+    linkedin: string;
+  };
+  what_learn: Array<string>;
+  why_attend: Array<string>;
 }
 interface HackerRenderProps {
   data: Hacker;
@@ -23,7 +37,10 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     if (!isaccepted) {
       return (
         <div className="flex gap-2 mt-4 justify-end items-center">
-          <button className="py-3 px-8 bg-blue-400 rounded-lg font-bold">
+          <button
+            className="py-3 px-8 bg-blue-400 rounded-lg font-bold"
+            onClick={() => acceptHacker(data, data.email)}
+          >
             {' '}
             Accept{' '}
           </button>
@@ -39,7 +56,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     if (!accepted) {
       return (
         <div className="w-full flex align-center justify-end md:px-5">
-          <div className="flex h-1/2 align-center w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 font-xs font-bold italic text-red-900 bg-red-300 ">
+          <div className="flex h-1/2 align-center w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 font-xs font-bold text-red-900 bg-red-300 ">
             Review{' '}
           </div>
         </div>
@@ -48,7 +65,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     if (status) {
       return (
         <div className="w-full flex align-center justify-end md:px-5">
-          <div className="flex h-1/2 align-center  w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 font-xs  italic font-bold text-green-900 bg-green-300 ">
+          <div className="flex h-1/2 align-center  w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 font-xs font-bold text-green-900 bg-green-300 ">
             {' '}
             Confirmed{' '}
           </div>
@@ -57,7 +74,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     }
     return (
       <div className="w-full flex align-center justify-end md:px-5">
-        <div className="flex h-1/2 align-center  w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 font-xs  italic font-bold text-yellow-900 bg-yellow-300 backdrop-opacity-25">
+        <div className="flex h-1/2 align-center  w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 font-xs font-bold text-yellow-900 bg-yellow-300 backdrop-opacity-25">
           {' '}
           Pending{' '}
         </div>
@@ -103,12 +120,12 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
         >
           <div className="h-24 px-4 grid grid-cols-2 w-full gap-3 items-center justify-center">
             <div className="flex flex-col  ">
-              <text className="font-bold text-2xl">
+              <text className="font-bold text-lg lg:text-2xl">
                 {' '}
                 {data.first_name} {'\t'} {data.last_name}{' '}
               </text>
               <text className="text-medium italic text-gray-400">
-                X days ago
+                X days Ago
               </text>
             </div>
             {showStatus(data.rsvp_status, data.isaccepted)}
@@ -116,37 +133,73 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
         </AccordionSummary>
         <AccordionDetails>
           <div className="md:grid md:grid-cols-2 flex flex-col px-5 gap-2 md:gap-0 mb-5">
-            <div className="grid grid-cols-2 justify-start gap-2">
-              <div className="font-bold"> Begineer </div>
+            <div className="grid grid-cols-2 justify-start gap-2 sm:px-4">
+              <div className="font-bold"> Beginner </div>
               <text> {data.beginner ? 'Yes' : 'No'} </text>
-
-              <div className="font-bold">Email </div>
-              <a href="mailto:user@gmail.com"> {data.email} </a>
-
+              <div className="font-bold sm:">Email </div>
+              <a className=" sm:overflow-ellipsis sm:overflow-hidden">
+                {' '}
+                {data.email}{' '}
+              </a>
               <div className="font-bold"> GitHub </div>
-              <a href="github.com"> github.com/John-Doe </a>
-
+              <a
+                href={data.socials.github}
+                className=" sm:overflow-ellipsis sm:overflow-hidden"
+              >
+                {' '}
+                {data.socials.github}{' '}
+              </a>
               <div className="font-bold"> LinkedIn </div>
-              <a href="linkedin.com"> linkedin.com/John-Doe </a>
+              <a
+                href={data.socials.linkedin}
+                className=" sm:overflow-ellipsis sm:overflow-hidden"
+              >
+                {' '}
+                {data.socials.linkedin}
+              </a>
             </div>
 
             <div className="grid grid-cols-2 justify-start gap-2">
-              <div className="font-bold"> More Information </div>
-              <text> Info </text>
+              <div className="font-bold"> College </div>
+              <text className=" sm:overflow-ellipsis sm:overflow-hidden">
+                {' '}
+                {data.edu_info.college}{' '}
+              </text>
 
-              <div className="font-bold"> More Information </div>
-              <a href="mailto:user@gmail.com"> Info </a>
+              <div className="font-bold"> Graduation Date</div>
+              <a
+                href="mailto:user@gmail.com"
+                className=" sm:overflow-ellipsis sm:overflow-hidden"
+              >
+                {' '}
+                {data.edu_info.graduation_date}{' '}
+              </a>
 
-              <div className="font-bold">More Information </div>
-              <a href="github.com"> Info </a>
+              <div className="font-bold">Level of Study </div>
+              <text className=" sm:overflow-ellipsis sm:overflow-hidden">
+                {' '}
+                {data.edu_info.level_of_study}{' '}
+              </text>
 
-              <div className="font-bold"> More Information </div>
-              <a href="linkedin.com"> Info </a>
+              <div className="font-bold"> Major </div>
+              <text className=" sm:overflow-ellipsis sm:overflow-hidden">
+                {' '}
+                {data.edu_info.major}{' '}
+              </text>
             </div>
           </div>
-          {/* <iframe
-            src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
-          /> */}
+
+          <div className="grid grid-cols-2 justify-center gap-2 px-5 mb-5">
+            <div>
+              <div className="font-bold"> What do you want to learn? </div>
+              <text> {data.what_learn} </text>
+            </div>
+            <div>
+              <div className="font-bold"> Why do you want to attend? </div>
+              <text> {data.why_attend} </text>
+            </div>
+          </div>
+
           {showAcceptReject(data.isaccepted)}
 
           {/* <div style={{ margin: 10 }}>
