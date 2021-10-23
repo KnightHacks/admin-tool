@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useMsal, useIsAuthenticated } from '@azure/msal-react';
 import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
-import * as config from '../config.json';
+import { loginRequest } from '../azure';
 export default function LoginPage(): JSX.Element {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [statusCode, setStatusCode] = useState(0);
   const [StatusMessage, setStatusMessage] = useState('');
   const history = useHistory();
+  const { instance } = useMsal();
+  const handleLogin = () => {
+    instance.loginPopup(loginRequest).catch((e) => console.log(e));
+  };
   function UsernameCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setUsername(event.target.value);
   }
@@ -51,6 +56,10 @@ export default function LoginPage(): JSX.Element {
         break;
     }
   }
+  const isAuthenticated = useIsAuthenticated();
+  if (isAuthenticated) {
+    history.push('/Hackers');
+  }
   return (
     <div>
       <img src={KnightHacksLogo} alt="Knight Hacks Logo" />
@@ -62,7 +71,7 @@ export default function LoginPage(): JSX.Element {
         placeholder="Password"
         onChange={PasswordCapture}
       />
-      <a href={config.redirect_url}>Log on</a>
+      <button onClick={() => handleLogin()}>LogIn</button>
     </div>
   );
 }
