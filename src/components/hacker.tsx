@@ -144,18 +144,18 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
         </AccordionSummary>
         <AccordionDetails>
           <div className="md:grid md:grid-cols-2 flex flex-col px-5 gap-2 md:gap-0 mb-5">
-            <div className="grid grid-cols-2 justify-start gap-2 sm:mr-4">
+            <div className="grid grid-cols-2 justify-start gap-2 sm:mr-4 px-">
               <div className="font-bold"> Beginner </div>
               <text> {data.beginner ? 'Yes' : 'No'} </text>
               <div className="font-bold sm:">Email </div>
-              <a className=" sm:overflow-ellipsis sm:overflow-hidden">
+              <a className=" sm:overflow-ellipsis sm:overflow-hidden break-words">
                 {' '}
                 {data.email}{' '}
               </a>
               <div className="font-bold"> GitHub </div>
               <a
                 href={data.socials.github}
-                className=" sm:overflow-ellipsis sm:overflow-hidden"
+                className=" sm:overflow-ellipsis sm:overflow-hidden break-words "
               >
                 {' '}
                 {data.socials.github}{' '}
@@ -163,7 +163,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               <div className="font-bold"> LinkedIn </div>
               <a
                 href={data.socials.linkedin}
-                className=" sm:overflow-ellipsis sm:overflow-hidden"
+                className=" sm:overflow-ellipsis sm:overflow-hidden break-words"
               >
                 {' '}
                 {data.socials.linkedin}
@@ -172,7 +172,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
 
             <div className="grid grid-cols-2 justify-start gap-2">
               <div className="font-bold"> College </div>
-              <text className=" sm:overflow-ellipsis sm:overflow-hidden">
+              <text className=" sm:overflow-ellipsis sm:overflow-hidden break-words">
                 {' '}
                 {data.edu_info.college}{' '}
               </text>
@@ -180,7 +180,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               <div className="font-bold"> Graduation Date</div>
               <a
                 href="mailto:user@gmail.com"
-                className=" sm:overflow-ellipsis sm:overflow-hidden"
+                className=" sm:overflow-ellipsis sm:overflow-hidden "
               >
                 {' '}
                 {data.edu_info.graduation_date}{' '}
@@ -210,8 +210,9 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               <text> {data.why_attend} </text>
             </div>
           </div>
-          <div className="h-5/6 w-auto flex items-center justify-center">
+          <div className="w-full h-auto flex items-center justify-center">
             <iframe
+              className="w-4/6 "
               src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
             />
           </div>
