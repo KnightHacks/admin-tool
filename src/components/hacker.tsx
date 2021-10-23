@@ -197,7 +197,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               </div>
             </div>
 
-            <div className="flex lg:flex-row flex-col justify-center gap-2 px-5 mb-5">
+            <div className="flex lg:flex-row flex-col justify-center gap-2 px-5 mb-12">
               <div className="w-full lg:w-1/2">
                 <div className="font-bold"> What do you want to learn? </div>
                 <text> {data.what_learn} </text>
@@ -207,9 +207,8 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                 <text> {data.why_attend} </text>
               </div>
             </div>
-            <div className="w-full h-96 flex items-center justify-center">
+            <div className="aspect-w-16 aspect-h-9 flex items-center justify-center">
               <iframe
-                className="w-4/6 h-auto "
                 src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
               />
             </div>
