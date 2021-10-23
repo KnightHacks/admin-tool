@@ -38,13 +38,13 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
       return (
         <div className="flex gap-2 mt-4 justify-end items-center">
           <button
-            className="py-3 px-8 bg-blue-400 rounded-lg font-bold"
+            className="py-3 px-8 text-indigo-900 bg-blue-400 rounded-lg font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110"
             onClick={() => acceptHacker(data, data.email)}
           >
             {' '}
             Accept{' '}
           </button>
-          <button className="py-3 px-8 border-2 text-blue-900 border-blue-900 rounded-lg font-bold">
+          <button className="py-3 px-8 border-2 text-blue-900 border-blue-900 rounded-lg font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110">
             {' '}
             Reject{' '}
           </button>
@@ -111,7 +111,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
   }
 
   return (
-    <div>
+    <div className="lg:w-4/6">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -133,7 +133,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
         </AccordionSummary>
         <AccordionDetails>
           <div className="md:grid md:grid-cols-2 flex flex-col px-5 gap-2 md:gap-0 mb-5">
-            <div className="grid grid-cols-2 justify-start gap-2 sm:px-4">
+            <div className="grid grid-cols-2 justify-start gap-2 sm:mr-4">
               <div className="font-bold"> Beginner </div>
               <text> {data.beginner ? 'Yes' : 'No'} </text>
               <div className="font-bold sm:">Email </div>
@@ -189,33 +189,23 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 justify-center gap-2 px-5 mb-5">
-            <div>
+          <div className="flex lg:flex-row flex-col justify-center gap-2 px-5 mb-5">
+            <div className="w-full lg:w-1/2">
               <div className="font-bold"> What do you want to learn? </div>
               <text> {data.what_learn} </text>
             </div>
-            <div>
+            <div className="w-full lg:w-1/2">
               <div className="font-bold"> Why do you want to attend? </div>
               <text> {data.why_attend} </text>
             </div>
           </div>
 
+          {/* <div className="h-5/6 w-auto flex items-center justify-center">
+            <iframe
+              src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
+            />
+          </div> */}
           {showAcceptReject(data.isaccepted)}
-
-          {/* <div style={{ margin: 10 }}>
-            <button
-              className="button is-success"
-              style={{ marginRight: 5 }}
-              onClick={() => acceptHacker(data, data.email)}
-            >
-              Accept
-            </button>
-            <button className="button is-danger">Decline</button>
-          </div>
-          <iframe
-            src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
-          />
-          <p>{hackerText}</p> */}
         </AccordionDetails>
       </Accordion>
     </div>

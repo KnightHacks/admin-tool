@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import HackerRender from './hacker';
+import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
 interface Hacker {
   email: string;
   isaccepted: boolean;
@@ -132,14 +133,31 @@ export default function HackerTable(): JSX.Element {
       .then((data) => setHacker(data.hackers ?? []));
   }, []);
   return (
-    <div className="max-h-screen overflow-y-auto mt-5 px-5">
-      <button className="button is-danger" onClick={() => Logout()}>
-        Logout
-      </button>
-      <div className="flex no-wrap flex-col gap-3">
-        {sampleHackers.map((hacker) => (
-          <HackerRender key={hacker['email']} data={hacker} />
-        ))}
+    <div>
+      <nav className="grid grid-cols-2 bg-gray-700 drop-shadow-lg mb-3">
+        <div className="flex justify-start items-center mx-8 my-4">
+          <a
+            className="text-sm font-bold leading-relaxed inline-block  py-2 whitespace-nowrap uppercase text-white"
+            href="#pablo"
+          >
+            <img className="h-10 w-auto object-contain" src={KnightHacksLogo} />
+          </a>
+        </div>
+        <div className="flex flex-grow items-center mx-8 justify-end">
+          <button
+            className="py-3 px-8 text-yellow-400 border-2 border-yellow-400 rounded-lg  font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110"
+            onClick={() => Logout()}
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
+      <div className="h-screen w-full overflow-y-auto mt-5 px-5">
+        <div className="flex flex-col  items-center justify-center gap-3">
+          {sampleHackers.map((hacker) => (
+            <HackerRender key={hacker['email']} data={hacker} />
+          ))}
+        </div>
       </div>
     </div>
   );
