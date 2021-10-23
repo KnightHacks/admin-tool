@@ -4,7 +4,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 16px;
+  width: 10px;
   height: 16px;
 }
 
@@ -16,12 +16,10 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
+  background: #abaeb3;
   border-radius: 100vh;
-  border: 3px solid #edf2f7;
 }
-
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
+  background: #abaeb3;
 }
