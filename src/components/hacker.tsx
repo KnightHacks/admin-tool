@@ -207,14 +207,13 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                 <text> {data.why_attend} </text>
               </div>
             </div>
-            <div className="w-full h-screen flex items-center justify-center">
+            <div className="w-full h-96 flex items-center justify-center">
               <iframe
                 className="w-4/6 h-auto "
                 src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
               />
             </div>
           </div>
-
           {showAcceptReject(data.isaccepted)}
         </AccordionDetails>
       </Accordion>
