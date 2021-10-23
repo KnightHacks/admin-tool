@@ -68,7 +68,7 @@ export default function HackerTable(): JSX.Element {
           </button>
         </div>
       </nav>
-      <div className="h-screen mt-24 w-full bg-gray-800 mt-5 px-5 py-8">
+      <div className="h-screen mt-24 w-full bg-gray-800 px-5 py-8">
         <div className="flex flex-col bg-gray-800 mx-0 px-0 items-center justify-center gap-3">
           {hackers.map((hacker) => (
             <HackerRender key={hacker['email']} data={hacker} />

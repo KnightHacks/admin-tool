@@ -139,79 +139,82 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <div className="md:grid md:grid-cols-2 flex flex-col px-5 gap-2 md:gap-0 mb-5">
-            <div className="grid grid-cols-2 justify-start gap-2 sm:mr-4 px-">
-              <div className="font-bold"> Beginner </div>
-              <text> {data.beginner ? 'Yes' : 'No'} </text>
-              <div className="font-bold sm:">Email </div>
-              <a className=" sm:overflow-ellipsis sm:overflow-hidden break-words">
-                {' '}
-                {data.email}{' '}
-              </a>
-              <div className="font-bold"> GitHub </div>
-              <a
-                href={data.socials.github}
-                className=" sm:overflow-ellipsis sm:overflow-hidden break-words "
-              >
-                {' '}
-                {data.socials.github}{' '}
-              </a>
-              <div className="font-bold"> LinkedIn </div>
-              <a
-                href={data.socials.linkedin}
-                className=" sm:overflow-ellipsis sm:overflow-hidden break-words"
-              >
-                {' '}
-                {data.socials.linkedin}
-              </a>
+          <div className="max-h-80 overflow-y-auto">
+            <div className="md:grid md:grid-cols-2 flex flex-col px-5 gap-2 md:gap-0 mb-5">
+              <div className="grid grid-cols-2 justify-start gap-2 sm:mr-4 px-">
+                <div className="font-bold"> Beginner </div>
+                <text> {data.beginner ? 'Yes' : 'No'} </text>
+                <div className="font-bold sm:">Email </div>
+                <a className=" sm:overflow-ellipsis sm:overflow-hidden break-words">
+                  {' '}
+                  {data.email}{' '}
+                </a>
+                <div className="font-bold"> GitHub </div>
+                <a
+                  href={data.socials.github}
+                  className=" sm:overflow-ellipsis sm:overflow-hidden break-words "
+                >
+                  {' '}
+                  {data.socials.github}{' '}
+                </a>
+                <div className="font-bold"> LinkedIn </div>
+                <a
+                  href={data.socials.linkedin}
+                  className=" sm:overflow-ellipsis sm:overflow-hidden break-words"
+                >
+                  {' '}
+                  {data.socials.linkedin}
+                </a>
+              </div>
+
+              <div className="grid grid-cols-2 justify-start gap-2">
+                <div className="font-bold"> College </div>
+                <text className=" sm:overflow-ellipsis sm:overflow-hidden break-words">
+                  {' '}
+                  {data.edu_info.college}{' '}
+                </text>
+
+                <div className="font-bold"> Graduation Date</div>
+                <a
+                  href="mailto:user@gmail.com"
+                  className=" sm:overflow-ellipsis sm:overflow-hidden "
+                >
+                  {' '}
+                  {data.edu_info.graduation_date}{' '}
+                </a>
+
+                <div className="font-bold">Level of Study </div>
+                <text className=" sm:overflow-ellipsis sm:overflow-hidden">
+                  {' '}
+                  {data.edu_info.level_of_study}{' '}
+                </text>
+
+                <div className="font-bold"> Major </div>
+                <text className=" sm:overflow-ellipsis sm:overflow-hidden">
+                  {' '}
+                  {data.edu_info.major}{' '}
+                </text>
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 justify-start gap-2">
-              <div className="font-bold"> College </div>
-              <text className=" sm:overflow-ellipsis sm:overflow-hidden break-words">
-                {' '}
-                {data.edu_info.college}{' '}
-              </text>
-
-              <div className="font-bold"> Graduation Date</div>
-              <a
-                href="mailto:user@gmail.com"
-                className=" sm:overflow-ellipsis sm:overflow-hidden "
-              >
-                {' '}
-                {data.edu_info.graduation_date}{' '}
-              </a>
-
-              <div className="font-bold">Level of Study </div>
-              <text className=" sm:overflow-ellipsis sm:overflow-hidden">
-                {' '}
-                {data.edu_info.level_of_study}{' '}
-              </text>
-
-              <div className="font-bold"> Major </div>
-              <text className=" sm:overflow-ellipsis sm:overflow-hidden">
-                {' '}
-                {data.edu_info.major}{' '}
-              </text>
+            <div className="flex lg:flex-row flex-col justify-center gap-2 px-5 mb-5">
+              <div className="w-full lg:w-1/2">
+                <div className="font-bold"> What do you want to learn? </div>
+                <text> {data.what_learn} </text>
+              </div>
+              <div className="w-full lg:w-1/2">
+                <div className="font-bold"> Why do you want to attend? </div>
+                <text> {data.why_attend} </text>
+              </div>
+            </div>
+            <div className="w-full h-screen flex items-center justify-center">
+              <iframe
+                className="w-4/6 h-auto "
+                src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
+              />
             </div>
           </div>
 
-          <div className="flex lg:flex-row flex-col justify-center gap-2 px-5 mb-5">
-            <div className="w-full lg:w-1/2">
-              <div className="font-bold"> What do you want to learn? </div>
-              <text> {data.what_learn} </text>
-            </div>
-            <div className="w-full lg:w-1/2">
-              <div className="font-bold"> Why do you want to attend? </div>
-              <text> {data.why_attend} </text>
-            </div>
-          </div>
-          <div className="w-full h-auto flex items-center justify-center">
-            <iframe
-              className="w-4/6 "
-              src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
-            />
-          </div>
           {showAcceptReject(data.isaccepted)}
         </AccordionDetails>
       </Accordion>
