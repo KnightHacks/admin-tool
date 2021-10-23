@@ -110,6 +110,16 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     }
   }
 
+  function daysBetween(date1String: string, date2String: string) {
+    const ONE_DAY = 1000 * 60 * 60 * 24;
+
+    const d1 = new Date(date1String);
+    const d2 = new Date(date2String);
+    const diff_time = d1.getTime() - d2.getTime();
+    const diff_days = diff_time / ONE_DAY;
+
+    return Math.floor(diff_days);
+  }
   return (
     <div className="lg:w-4/6">
       <Accordion>
@@ -125,7 +135,8 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                 {data.first_name} {'\t'} {data.last_name}{' '}
               </text>
               <text className="text-medium italic text-gray-400">
-                X days Ago
+                {daysBetween(new Date().toISOString(), data.date)} {'\t'} days
+                ago
               </text>
             </div>
             {showStatus(data.rsvp_status, data.isaccepted)}
@@ -199,12 +210,11 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               <text> {data.why_attend} </text>
             </div>
           </div>
-
-          {/* <div className="h-5/6 w-auto flex items-center justify-center">
+          <div className="h-5/6 w-auto flex items-center justify-center">
             <iframe
               src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
             />
-          </div> */}
+          </div>
           {showAcceptReject(data.isaccepted)}
         </AccordionDetails>
       </Accordion>

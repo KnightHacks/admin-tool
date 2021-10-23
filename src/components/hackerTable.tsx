@@ -32,7 +32,7 @@ export default function HackerTable(): JSX.Element {
     rsvp_status: false,
     first_name: 'John',
     last_name: 'Doe',
-    date: '2021-10-14T00:39:57+0000',
+    date: '2021-10-08T02:31:24+0000',
     beginner: false,
     edu_info: {
       college: 'COLLEGE',
@@ -82,7 +82,7 @@ export default function HackerTable(): JSX.Element {
     rsvp_status: false,
     first_name: 'John',
     last_name: 'Doe',
-    date: '2021-10-14T00:39:57+0000',
+    date: '2021-08-08T02:31:24+0000',
     beginner: true,
     edu_info: {
       college: 'COLLEGE',
@@ -152,7 +152,7 @@ export default function HackerTable(): JSX.Element {
           </button>
         </div>
       </nav>
-      <div className="h-screen w-full overflow-y-auto mt-5 px-5">
+      <div className="h-screen w-full overflow-y-auto mt-5 px-5 py-8">
         <div className="flex flex-col  items-center justify-center gap-3">
           {sampleHackers.map((hacker) => (
             <HackerRender key={hacker['email']} data={hacker} />
