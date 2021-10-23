@@ -16,6 +16,7 @@ import {
   UserIcon,
   ViewBoardsIcon,
 } from '@heroicons/react/outline';
+import StatsPage from './StatsPage';
 
 function Dashboard(): JSX.Element {
   const { path, url } = useRouteMatch();
@@ -100,8 +101,11 @@ function Dashboard(): JSX.Element {
           </li>
         </ul>
       </div>
-      <div className="flex flex-1">
+      <div className="flex flex-1 justify-center items-center">
         <Switch>
+          <Route path={path}>
+            <StatsPage />
+          </Route>
           <Route path={`${path}/hackers`}>
             <HackerPage />
           </Route>
