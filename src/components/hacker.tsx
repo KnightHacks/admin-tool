@@ -147,7 +147,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                   className=" sm:overflow-ellipsis sm:overflow-hidden break-words "
                 >
                   {' '}
-                  {data.socials.github}{' '}
+                  {data.socials.github ?? 'N/A'}{' '}
                 </a>
                 <div className="font-bold"> LinkedIn </div>
                 <a
@@ -155,7 +155,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                   className=" sm:overflow-ellipsis sm:overflow-hidden break-words"
                 >
                   {' '}
-                  {data.socials.linkedin}
+                  {data.socials.linkedin ?? 'N/A'}
                 </a>
               </div>
 
@@ -163,7 +163,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                 <div className="font-bold"> College </div>
                 <text className=" sm:overflow-ellipsis sm:overflow-hidden break-words">
                   {' '}
-                  {data.edu_info.college}{' '}
+                  {data.edu_info.college ?? 'N/A'}{' '}
                 </text>
 
                 <div className="font-bold"> Graduation Date</div>
@@ -172,19 +172,19 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                   className=" sm:overflow-ellipsis sm:overflow-hidden "
                 >
                   {' '}
-                  {data.edu_info.graduation_date}{' '}
+                  {data.edu_info.graduation_date ?? 'N/A'}{' '}
                 </a>
 
                 <div className="font-bold">Level of Study </div>
                 <text className=" sm:overflow-ellipsis sm:overflow-hidden">
                   {' '}
-                  {data.edu_info.level_of_study}{' '}
+                  {data.edu_info.level_of_study ?? 'N/A'}{' '}
                 </text>
 
                 <div className="font-bold"> Major </div>
                 <text className=" sm:overflow-ellipsis sm:overflow-hidden">
                   {' '}
-                  {data.edu_info.major}{' '}
+                  {data.edu_info.major ?? 'N/A'}{' '}
                 </text>
               </div>
             </div>
@@ -192,11 +192,11 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
             <div className="flex lg:flex-row flex-col justify-center gap-2 px-5 mb-12">
               <div className="w-full lg:w-1/2">
                 <div className="font-bold"> What do you want to learn? </div>
-                <text> {data.what_learn} </text>
+                <text> {data.what_learn ?? 'N/A'} </text>
               </div>
               <div className="w-full lg:w-1/2">
                 <div className="font-bold"> Why do you want to attend? </div>
-                <text> {data.why_attend} </text>
+                <text> {data.why_attend ?? 'N/A'} </text>
               </div>
             </div>
             <div className="aspect-w-16 aspect-h-9 flex items-center justify-center">
