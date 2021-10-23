@@ -121,7 +121,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     return Math.floor(diff_days);
   }
   return (
-    <div className="lg:w-4/6">
+    <div className="lg:w-4/6 h-full">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
