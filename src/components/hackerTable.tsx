@@ -143,7 +143,7 @@ export default function HackerTable(): JSX.Element {
             <img className="h-10 w-auto object-contain" src={KnightHacksLogo} />
           </a>
         </div>
-        <div className="flex flex-grow items-center mx-8 justify-end">
+        <div className="flex flex-grow items-center mx-8 justify-end gap-2">
           <button
             className="py-3 px-8 text-yellow-400 border-2 border-yellow-400 rounded-lg  font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110"
             onClick={() => Logout()}

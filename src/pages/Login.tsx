@@ -51,7 +51,7 @@ export default function LoginPage(): JSX.Element {
     }
   }
   return (
-    <div className="w-[calc(100%-10px)] sm:w-1/2 lg:w-1/4 bg-gray-200 rounded-lg px-8 py-4">
+    <div className="w-[calc(100%-10px)] sm:w-1/2 lg:w-1/4 bg-white rounded-lg px-8 py-4">
       <div className="flex flex-col items-center space-y-8">
         <img src={KnightHacksLogo} alt="Knight Hacks Logo" className="w-3/4" />
         <input
