@@ -51,8 +51,8 @@ export default function LoginPage(): JSX.Element {
     }
   }
   return (
-    <div className="w-screen h-screen bg-gray-800 flex justify-center items-center">
-      <div className="w-[calc(100%-10px)] sm:w-1/2 lg:w-1/4 bg-gray-200 rounded-lg px-8 py-4">
+    <div className="w-screen h-screen bg-dark-gray flex justify-center items-center">
+      <div className="w-[calc(100%-10px)] sm:w-1/2 lg:w-1/4 bg-white rounded-lg px-8 py-4">
         <div className="flex flex-col items-center space-y-8">
           <img
             src={KnightHacksLogo}
@@ -65,7 +65,7 @@ export default function LoginPage(): JSX.Element {
             onChange={UsernameCapture}
             className={`shadow appearance-none border ${
               StatusMessage === '' ? 'border-gray-500' : ' border-red-500'
-            } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-200`}
+            } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
           />
           <input
             type="password"
@@ -73,7 +73,7 @@ export default function LoginPage(): JSX.Element {
             onChange={PasswordCapture}
             className={`shadow appearance-none border ${
               StatusMessage === '' ? 'border-gray-500' : ' border-red-500'
-            } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-200`}
+            } rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-white`}
           />
           <button
             onClick={Login}
