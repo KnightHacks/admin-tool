@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { SocialDistance } from '@mui/icons-material';
 interface Hacker {
   email: string;
   isaccepted: boolean;
@@ -81,9 +79,6 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
       </div>
     );
   }
-  function showResume(email: string) {
-    console.log('show_resume');
-  }
   function acceptHacker(data: Hacker, email: string): void {
     if (data.isaccepted === false) {
       const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
@@ -107,6 +102,7 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
       setHackerText(
         data.first_name + ' ' + data.last_name + ' has already been accepted!',
       );
+      window.alert(hackerText);
     }
   }
 
