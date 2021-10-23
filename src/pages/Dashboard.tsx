@@ -22,7 +22,7 @@ function Dashboard(): JSX.Element {
   const history = useHistory();
   return (
     <div className="min-h-screen flex flex-row bg-gray-800">
-      <div className="flex flex-col w-56 bg-gray-200 rounded-r-3xl overflow-hidden">
+      <div className="flex flex-col w-16 md:w-72 bg-gray-200 overflow-hidden">
         <div className="flex items-center justify-center h-20 shadow-md">
           <img
             src={KnightHacksLogo}
@@ -30,7 +30,7 @@ function Dashboard(): JSX.Element {
             className="w-3/4"
           />
         </div>
-        <ul className="flex flex-col py-4">
+        <ul className="flex flex-col py-4 md:pl-4">
           <li>
             <Link
               to={url}
@@ -39,7 +39,9 @@ function Dashboard(): JSX.Element {
               <span className="inline-flex items-center justify-center h-12 w-12">
                 <ViewBoardsIcon className="w-6" />
               </span>
-              <span className="text-sm font-medium">Dashboard</span>
+              <span className="text-sm font-medium hidden md:block">
+                Dashboard
+              </span>
             </Link>
           </li>
           <li>
@@ -50,7 +52,9 @@ function Dashboard(): JSX.Element {
               <span className="inline-flex items-center justify-center h-12 w-12">
                 <UserIcon className="w-6 " />
               </span>
-              <span className="text-sm font-medium">Hackers</span>
+              <span className="text-sm font-medium hidden md:block">
+                Hackers
+              </span>
             </Link>
           </li>
           <li>
@@ -61,7 +65,9 @@ function Dashboard(): JSX.Element {
               <span className="inline-flex items-center justify-center h-12 w-12">
                 <CurrencyDollarIcon className="w-6 " />
               </span>
-              <span className="text-sm font-medium">Sponsors</span>
+              <span className="text-sm font-medium hidden md:block">
+                Sponsors
+              </span>
             </Link>
           </li>
           <li>
@@ -72,7 +78,9 @@ function Dashboard(): JSX.Element {
               <span className="inline-flex items-center justify-center h-12 w-12">
                 <CalendarIcon className="w-6" />
               </span>
-              <span className="text-sm font-medium">Events</span>
+              <span className="text-sm font-medium hidden md:block">
+                Events
+              </span>
             </Link>
           </li>
           <li>
@@ -85,7 +93,9 @@ function Dashboard(): JSX.Element {
               <span className="inline-flex items-center justify-center h-12 w-12">
                 <LogoutIcon className="w-6" />
               </span>
-              <span className="text-sm font-medium">Logout</span>
+              <span className="text-sm font-medium hidden md:block">
+                Logout
+              </span>
             </div>
           </li>
         </ul>
