@@ -36,13 +36,13 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
       return (
         <div className="flex gap-2 mt-4 justify-end items-center">
           <button
-            className="py-3 px-8 text-indigo-900 bg-blue-400 rounded-lg font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110"
+            className="py-3 px-8 text-green-900 bg-green-400 rounded-lg font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110"
             onClick={() => acceptHacker(data, data.email)}
           >
             {' '}
             Accept{' '}
           </button>
-          <button className="py-3 px-8 border-2 text-blue-900 border-blue-900 rounded-lg font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110">
+          <button className="py-3 px-8  text-red-800 bg-red-300 rounded-lg font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110">
             {' '}
             Reject{' '}
           </button>
@@ -208,10 +208,15 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               />
             </div>
           </div>
-          <button onClick={() => verifyEmail(data, data.email)}>
-            Send verify email
-          </button>
-          {showAcceptReject(data.isaccepted)}
+          <div className="flex gap-2 justify-end items-center">
+            {showAcceptReject(data.isaccepted)}
+            <button
+              className="py-3 px-8 mt-4  text-blue-500 bg-blue-200 rounded-lg font-bold transition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110"
+              onClick={() => verifyEmail(data, data.email)}
+            >
+              Verify
+            </button>
+          </div>
         </AccordionDetails>
       </Accordion>
     </div>
