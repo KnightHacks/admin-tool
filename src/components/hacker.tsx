@@ -71,18 +71,20 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
       </div>
     );
   }
+  function verifyEmail(data: Hacker, email: string): void {
+    const sendEmailURL = `https://api.knighthacks.org/api/email/verify/${email}/`;
+    fetch(sendEmailURL, {
+      method: 'POST',
+      credentials: 'include',
+    }).catch((err) => {
+      throw new Error(err);
+    });
+  }
   function acceptHacker(data: Hacker, email: string): void {
     if (data.isaccepted === false) {
       const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
       fetch(acceptURL, {
         method: 'PUT',
-        credentials: 'include',
-      }).catch((err) => {
-        throw new Error(err);
-      });
-      const sendEmailURL = `https://api.knighthacks.org/api/email/verify/${email}/`;
-      fetch(sendEmailURL, {
-        method: 'POST',
         credentials: 'include',
       }).catch((err) => {
         throw new Error(err);
@@ -206,6 +208,9 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               />
             </div>
           </div>
+          <button onClick={() => verifyEmail(data, data.email)}>
+            Send verify email
+          </button>
           {showAcceptReject(data.isaccepted)}
         </AccordionDetails>
       </Accordion>
