@@ -103,7 +103,7 @@ function Dashboard(): JSX.Element {
       </div>
       <div className="flex flex-1 justify-center items-center">
         <Switch>
-          <Route path={path}>
+          <Route exact path={path}>
             <StatsPage />
           </Route>
           <Route path={`${path}/hackers`}>
