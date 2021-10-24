@@ -36,7 +36,7 @@ export default function HackerTable(): JSX.Element {
       .then((data) => setHacker(data.hackers ?? []));
   }, []);
   return (
-    <div className="flex flex-col items-center justify-center gap-3">
+    <div className="h-full my-8 flex flex-col items-center justify-center gap-3">
       {hackers.map((hacker) => (
         <HackerRender key={hacker['email']} data={hacker} />
       ))}
