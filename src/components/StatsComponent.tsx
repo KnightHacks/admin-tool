@@ -24,9 +24,25 @@ export default function StatsComponent(): JSX.Element {
   }, []);
   */
   return (
-    <div>
-      <p>Total Hackers: {stats.hackers}</p>
-      <p>Total Sponsors: {stats.sponsors}</p>
+    <div className="flex flex-wrap align-top justify-center items-center flex-rows gap-4 ">
+      <div className="px-5 rounded-lg bg-red-500  items-center h-48 w-48 md:h-72 md:w-72 justify-center flex flex-col">
+        <div className="text-6xl md:text-8xl font-bold text-white">
+          {' '}
+          {stats.hackers ?? 'XX'}{' '}
+        </div>
+        <p className="text-xl md:text-3xl text-white"> Hackers </p>
+      </div>
+      <div className="px-5 rounded-lg bg-blue-500 items-center h-48 w-48 md:h-72 md:w-72 justify-center flex flex-col">
+        <div className="text-6xl md:text-8xl font-bold text-white">
+          {' '}
+          {stats.sponsors ?? 'XX'}{' '}
+        </div>
+        <p className="text-xl md:text-3xl text-white"> Sponsors </p>
+      </div>
+      <div className="px-5 rounded-lg bg-purple-500 h-48 w-48 md:h-72 md:w-72 items-center justify-center flex flex-col">
+        <div className=" text-6xl md:text-8xl font-bold text-white"> XX </div>
+        <p className=" text-xl md:text-3xl text-white"> Events </p>
+      </div>
     </div>
   );
 }
