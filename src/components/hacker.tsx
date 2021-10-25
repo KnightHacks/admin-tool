@@ -21,6 +21,7 @@ interface Hacker {
     github: string;
     linkedin: string;
   };
+  email_verification: boolean;
   what_learn: Array<string>;
   why_attend: Array<string>;
 }
