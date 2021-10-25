@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-//import HackerTable from '../components/hackerTable';
-//import StatsComponent from '../components/StatsComponent';
-//import SponsorsComponent from '../components/SponsorsComponent';
+import HackerTable from '../components/hackerTable';
+import StatsComponent from '../components/StatsComponent';
+import SponsorsComponent from '../components/SponsorsComponent';
 import { useEndpoint } from '../api';
 
 export default function HackerPage(): JSX.Element {
@@ -22,9 +22,9 @@ export default function HackerPage(): JSX.Element {
     <div>
       <p>Welcome to the hacker page!</p>
       <p>{JSON.stringify(json)}</p>
-      {/*<HackerTable />*/}
-      {/*<StatsComponent />*/}
-      {/*<SponsorsComponent />*/}
+      <HackerTable />
+      <StatsComponent />
+      <SponsorsComponent />
     </div>
   );
 }
