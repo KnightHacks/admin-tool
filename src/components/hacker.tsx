@@ -51,8 +51,8 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
       );
     }
   }
-  function showStatus(email_verified: boolean, accepted: boolean) {
-    if (!email_verified) {
+  function showStatus(verified: boolean, accepted: boolean) {
+    if (!verified) {
       return (
         <div className="w-full flex align-center justify-end md:px-5">
           <div className="flex h-1/2 align-center  w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 font-xs font-bold text-red-900 bg-red-300 backdrop-opacity-25">
