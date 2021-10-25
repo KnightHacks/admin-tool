@@ -1,3 +1,0 @@
-{
-  "redirect_url": "https://login.microsoftonline.com/0e88cb87-5a0a-47af-b8a9-2c4223451541/oauth2/v2.0/authorize?response_type=code&client_id=d25c21f2-03e9-4e85-a4a7-8b4be2ddf704&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fapi%2Fauth%2FgetAToken&scope=openid+email+profile&state=8Mys30uubsAhdhrBBPaSAjOLTsiTQc&nonce=dnit1TiA8zUujFMRkhCh"
-}
