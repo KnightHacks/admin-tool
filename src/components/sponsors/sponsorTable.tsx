@@ -1,33 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  SponsorRender,
-  Sponsor,
-  SponsorRenderProps,
-  SponsorTier,
-  getSponsorTierString,
-} from './sponsor';
+import { SponsorRender, Sponsor, SponsorTier } from './sponsor';
 
-export default function SponsorTable({}): JSX.Element {
+interface TableParams {
+  sponsorList: Sponsor[];
+}
+
+export default function SponsorTable({
+  sponsorList,
+}: TableParams): JSX.Element {
   const history = useHistory();
-  const [sponsors, setSponsors] = useState<Array<Sponsor>>([]);
-
-  useEffect(() => {
-    const sponsorsCopy = [...sponsors];
-    sponsorsCopy.push({
-      name: 'Demo Sponsor',
-      description:
-        'This is not a real sponsor, but is rather being used to determine if this would work.',
-      tier: SponsorTier.Gold,
-      linkedIn: 'https://www.linkedin.com/in/elijahmsmith/',
-    });
-
-    setSponsors(sponsorsCopy);
-  }, []);
 
   return (
     <div>
-      {sponsors.map((sponsor) => (
+      {sponsorList.map((sponsor) => (
         <SponsorRender key={sponsor.name} data={sponsor} />
       ))}
     </div>

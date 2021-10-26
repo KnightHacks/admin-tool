@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import HackerRender from './hacker';
-import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
+import KnightHacksLogo from '../../assets/knightHacksLogoGold.svg';
 interface Hacker {
   email: string;
   isaccepted: boolean;
