@@ -28,7 +28,7 @@ export default function HackerTable(): JSX.Element {
   const history = useHistory();
 
   function Logout() {
-    const logoutURL = 'https://api.knighthacks.org/api/auth/signout/';
+    const logoutURL = process.env.REACT_APP_API_URL + '/api/auth/signout/';
     fetch(logoutURL, {
       method: 'GET',
       credentials: 'include',
@@ -41,7 +41,7 @@ export default function HackerTable(): JSX.Element {
   console.log(hackers[0]);
   useEffect(() => {
     const hackerURL =
-      'https://api.knighthacks.org/api/hackers/get_all_hackers/';
+      process.env.REACT_APP_API_UR + '/api/hackers/get_all_hackers/';
     fetch(hackerURL, {
       method: 'GET',
       credentials: 'include',

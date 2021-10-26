@@ -32,7 +32,7 @@ export default function SponsorsComponent(): JSX.Element {
       sponsor_name: sponsorName,
       subscription_tier: sponsorTier,
     };
-    const sponsorCreationURL = 'https://api.knighthacks.org/api/sponsors/';
+    const sponsorCreationURL = process.env.REACT_APP_API_UR + '/api/sponsors/';
     useEffect(() => {
       fetch(sponsorCreationURL, {
         method: 'POST',
