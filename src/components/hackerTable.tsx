@@ -38,10 +38,9 @@ export default function HackerTable(): JSX.Element {
     history.push('/');
   }
   const [hackers, setHacker] = useState<Array<Hacker>>([]);
-  console.log(hackers[0]);
   useEffect(() => {
     const hackerURL =
-      process.env.REACT_APP_API_UR + '/api/hackers/get_all_hackers/';
+      process.env.REACT_APP_API_URL + '/api/hackers/get_all_hackers/';
     fetch(hackerURL, {
       method: 'GET',
       credentials: 'include',

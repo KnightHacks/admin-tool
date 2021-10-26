@@ -23,7 +23,7 @@ export default function LoginPage(): JSX.Element {
         >
           Sign In
         </button>
-        <p>API url is currently: {process.env.REACT_APP_API_UR}</p>
+        <p>API url is currently: {process.env.REACT_APP_API_URL}</p>
       </div>
     </div>
   );

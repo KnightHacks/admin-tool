@@ -32,7 +32,7 @@ export default function SponsorsComponent(): JSX.Element {
       sponsor_name: sponsorName,
       subscription_tier: sponsorTier,
     };
-    const sponsorCreationURL = process.env.REACT_APP_API_UR + '/api/sponsors/';
+    const sponsorCreationURL = process.env.REACT_APP_API_URL + '/api/sponsors/';
     useEffect(() => {
       fetch(sponsorCreationURL, {
         method: 'POST',
