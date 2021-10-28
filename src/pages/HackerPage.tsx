@@ -2,7 +2,7 @@ import React from 'react';
 import HackerTable from '../components/hackerTable';
 export default function HackerPage(): JSX.Element {
   return (
-    <div className="w-full h-screen mb-8 overflow-y-auto">
+    <div className="overflow-y-auto">
       <HackerTable />
     </div>
   );
