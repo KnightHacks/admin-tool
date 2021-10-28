@@ -49,8 +49,8 @@ export function SponsorRender({ sponsor }: SponsorRenderProps): JSX.Element {
     return (
       <div className="w-full flex align-center justify-end md:px-5">
         <div
+          className="flex h-1/2 text-white align-center w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 text-xl font-bold backdrop-opacity-25"
           style={{ color: textColor, backgroundColor: bgColor }}
-          className="flex font-xs text-white w-44 align-center justify-center text-center rounded-xl px-5 pb-1 font-bold backdrop-opacity-25 mr-5"
         >
           {'' + sponsor.tier}
         </div>
