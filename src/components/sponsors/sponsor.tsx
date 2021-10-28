@@ -2,7 +2,7 @@ import React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ReactComponent as DefaultLogo } from '../../assets/sponsor-logo-default.svg';
 
@@ -17,9 +17,8 @@ export enum SponsorTier {
 
 export interface Sponsor {
   name: string;
-  description: string;
-  linkedIn: string;
   tier: SponsorTier;
+  socials: string[];
 }
 
 export interface SponsorRenderProps {
@@ -67,24 +66,22 @@ export function SponsorRender({ sponsor }: SponsorRenderProps): JSX.Element {
           id="panel1a-header"
         >
           <div className="h-20 px-4 grid grid-cols-2 w-full gap-3 items-center justify-center">
-            <div className="flex flex-row">
-              <DefaultLogo className="w-16 h-16" />
-              <div className="flex flex-col ml-8">
-                <text className="font-bold text-2xl text-left">
-                  {sponsor.name}
-                </text>
-                <text className="text-base italic text-gray-400 text-left">
-                  {sponsor.linkedIn}
-                </text>
-              </div>
+            <div className="flex flex-row items-center">
+              <DefaultLogo className="lg:w-16 lg:h-16 w-8 h-8" />
+              <text className="flex justify-start text-left py-3 px-4 md:px-8 lg:text-2xl sm:text-lg font-bold">
+                {sponsor.name}
+              </text>
             </div>
             {showTier()}
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className="text-left text-lg px-5">
-            {sponsor.description}
-          </Typography>
+          {sponsor.socials.map((linkText) => (
+            <Link className="pl-4 py-5" key={linkText} href={linkText}>
+              {linkText}
+              <br />
+            </Link>
+          ))}
         </AccordionDetails>
       </Accordion>
     </div>

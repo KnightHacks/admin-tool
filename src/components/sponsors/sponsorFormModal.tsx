@@ -15,8 +15,7 @@ export default function SponsorForm({
   handleSubmission,
 }: FormControlProps): JSX.Element {
   const [name, setName] = useState(sponsor ? sponsor.name : '');
-  const [desc, setDesc] = useState(sponsor ? sponsor.description : '');
-  const [linkedIn, setLinkedIn] = useState(sponsor ? sponsor.linkedIn : '');
+  const [socials, setSocials] = useState(sponsor ? sponsor.socials : []);
   const [tier, setTier] = useState(sponsor ? sponsor.tier : '');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -80,34 +79,15 @@ export default function SponsorForm({
                     className="block text-gray-700 text-sm font-bold mb-2"
                     htmlFor="sponsorDesc"
                   >
-                    Description
+                    Socials (Enter One Per Line)
                   </label>
                   <textarea
                     className="text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="sponsorDesc"
                     rows={3}
-                    value={desc}
+                    value={socials.join('\n')}
                     onChange={(event) => {
-                      setDesc(event.target.value);
-                    }}
-                    autoComplete="off"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-0"
-                    htmlFor="sponsorLinkedIn"
-                  >
-                    Linked In
-                  </label>
-                  <input
-                    className="text-sm shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="sponsorLinkedIn"
-                    type="text"
-                    value={linkedIn}
-                    onChange={(event) => {
-                      setLinkedIn(event.target.value);
+                      setSocials(event.target.value.split('\n'));
                     }}
                     autoComplete="off"
                   />
@@ -152,11 +132,8 @@ export default function SponsorForm({
                     if (errorMsg === '')
                       handleSubmission({
                         name: name,
-                        description: desc ? desc : 'Description not provided.',
-                        linkedIn: linkedIn
-                          ? linkedIn
-                          : 'LinkedIn not provided.',
                         tier: SponsorTier[tier],
+                        socials: socials,
                       });
                     else setErrorMessage(errorMsg);
                   }}
@@ -178,8 +155,7 @@ export default function SponsorForm({
                   className="w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:w-auto sm:text-sm"
                   onClick={() => {
                     setName('');
-                    setDesc('');
-                    setLinkedIn('');
+                    setSocials([]);
                     setTier('');
                   }}
                 >

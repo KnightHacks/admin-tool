@@ -3,39 +3,45 @@ import { Sponsor, SponsorTier } from './sponsor';
 export const dummyArray = [
   {
     name: 'Demo Sponsor',
-    description:
-      'This is not a real sponsor, but is rather being used to determine if this would work.',
     tier: SponsorTier.Gold,
-    linkedIn: 'https://www.linkedin.com/in/elijahmsmith/',
+    socials: [
+      'https://www.linkedin.com/in/demo',
+      'https://www.github.com/Demo',
+    ],
   },
   {
     name: 'MicroGoogle',
-    description: 'The greatest company merger in Sci-Fi history.',
     tier: SponsorTier.Diamond,
-    linkedIn: 'https://www.linkedin.com/in/MicoGoog/',
+    socials: [
+      'https://www.linkedin.com/in/MicoGoogle',
+      'https://www.github.com/MicoGoogle',
+    ],
   },
   {
     name: 'OCPS',
-    description: 'Why not?',
     tier: SponsorTier.Bronze,
-    linkedIn: 'https://www.linkedin.com/in/OCPS/',
+    socials: ['https://www.linkedin.com/in/OCPS'],
   },
   {
     name: 'LockheedMyWarning',
-    description: 'I swear this one is real.',
     tier: SponsorTier.Silver,
-    linkedIn: 'https://www.linkedin.com/in/lockheedheedheed/',
+    socials: [
+      'https://www.linkedin.com/in/LockheedMyWarning',
+      'https://www.github.com/LockheedMyWarning',
+      'https://myspace.com/LockheedMyWarning',
+    ],
   },
   {
     name: 'SpaceXI',
-    description: 'The next generation of space adventure.',
     tier: SponsorTier.Diamond,
-    linkedIn: 'https://www.linkedin.com/in/spacexi/',
+    socials: [
+      'https://www.linkedin.com/in/SpaceXI',
+      'https://myspace.com/SpaceXI',
+    ],
   },
   {
     name: 'Bing',
-    description: 'I want to be relevant,',
     tier: SponsorTier.Platinum,
-    linkedIn: 'https://www.linkedin.com/in/bing/',
+    socials: [],
   },
 ];
