@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
-import './App.scss';
 import LoginPage from './pages/Login';
 import HackerPage from './pages/HackerPage';
 import SponsorPage from './pages/SponsorsPage';

@@ -135,6 +135,10 @@ export default function SponsorForm({
                     <option value="Bronze">Bronze (Customized Package)</option>
                   </select>
                 </div>
+
+                {errorMessage !== '' && (
+                  <p className="text-red-700">errorMessage</p>
+                )}
               </div>
             </div>
 
