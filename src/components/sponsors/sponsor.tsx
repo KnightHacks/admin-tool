@@ -2,6 +2,8 @@ import React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+
 import Link from '@mui/material/Link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ReactComponent as DefaultLogo } from '../../assets/sponsor-logo-default.svg';
@@ -17,8 +19,10 @@ export enum SponsorTier {
 
 export interface Sponsor {
   name: string;
+  website: string;
+  description: string;
   tier: SponsorTier;
-  socials: string[];
+  logo: File | null;
 }
 
 export interface SponsorRenderProps {
@@ -67,21 +71,29 @@ export function SponsorRender({ sponsor }: SponsorRenderProps): JSX.Element {
         >
           <div className="h-20 px-4 grid grid-cols-2 w-full gap-3 items-center justify-center">
             <div className="flex flex-row items-center">
-              <DefaultLogo className="lg:w-16 lg:h-16 w-8 h-8" />
-              <text className="flex justify-start text-left py-3 px-4 md:px-8 lg:text-2xl sm:text-lg font-bold">
-                {sponsor.name}
-              </text>
+              {sponsor.logo ? (
+                <img
+                  className="lg:h-16 h-8"
+                  src={URL.createObjectURL(sponsor.logo)}
+                />
+              ) : (
+                <DefaultLogo className="lg:h-16 h-8" />
+              )}
+              <div className="flex flex-col ml-8">
+                <p className="font-bold text-lg lg:text-2xl">{sponsor.name}</p>
+                <Link
+                  href={sponsor.website}
+                  className="text-medium italic text-gray-400"
+                >
+                  {sponsor.website}
+                </Link>
+              </div>
             </div>
             {showTier()}
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          {sponsor.socials.map((linkText) => (
-            <Link className="pl-4 py-5" key={linkText} href={linkText}>
-              {linkText}
-              <br />
-            </Link>
-          ))}
+          <Typography className="pl-4 pb-5">{sponsor.description}</Typography>
         </AccordionDetails>
       </Accordion>
     </div>

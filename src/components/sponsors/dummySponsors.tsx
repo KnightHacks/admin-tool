@@ -1,47 +1,47 @@
-import { Sponsor, SponsorTier } from './sponsor';
+import { SponsorTier } from './sponsor';
 
-export const dummyArray = [
+export default [
   {
     name: 'Demo Sponsor',
+    description: 'Description testing',
     tier: SponsorTier.Gold,
-    socials: [
-      'https://www.linkedin.com/in/demo',
-      'https://www.github.com/Demo',
-    ],
+    website: 'https://www.github.com/Demo',
+    logo: null,
   },
   {
     name: 'MicroGoogle',
+    description: 'Greatest merger of 2029 by popular vote',
     tier: SponsorTier.Diamond,
-    socials: [
-      'https://www.linkedin.com/in/MicoGoogle',
-      'https://www.github.com/MicoGoogle',
-    ],
+    website: 'https://www.linkedin.com/in/MicoGoogle',
+    logo: null,
   },
   {
     name: 'OCPS',
+    description: 'Hehehehehehehe',
     tier: SponsorTier.Bronze,
-    socials: ['https://www.linkedin.com/in/OCPS'],
+    website: 'https://www.linkedin.com/in/OCPS',
+    logo: null,
   },
   {
     name: 'LockheedMyWarning',
+    description:
+      'Parody company of Lockheed Martin, now larger and more valuable?',
     tier: SponsorTier.Silver,
-    socials: [
-      'https://www.linkedin.com/in/LockheedMyWarning',
-      'https://www.github.com/LockheedMyWarning',
-      'https://myspace.com/LockheedMyWarning',
-    ],
+    website: 'https://myspace.com/LockheedMyWarning',
+    logo: null,
   },
   {
     name: 'SpaceXI',
+    description: 'The next next big thing in the space race',
     tier: SponsorTier.Diamond,
-    socials: [
-      'https://www.linkedin.com/in/SpaceXI',
-      'https://myspace.com/SpaceXI',
-    ],
+    website: 'https://myspace.com/SpaceXI',
+    logo: null,
   },
   {
     name: 'Bing',
+    description: 'Yeah, I swear it is a thing',
     tier: SponsorTier.Platinum,
-    socials: [],
+    website: 'notarealsite.com',
+    logo: null,
   },
 ];
