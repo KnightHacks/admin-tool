@@ -62,7 +62,7 @@ export function SponsorRender({ sponsor }: SponsorRenderProps): JSX.Element {
   }
 
   return (
-    <div className="lg:w-10/12 h-full">
+    <div className="w-10/12 h-full">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
