@@ -3,11 +3,13 @@ import { loginRequest } from './azure';
 import { useMsal } from '@azure/msal-react';
 import { useHistory } from 'react-router-dom';
 
+// TODO: fix the return type for this hook
 export const useEndpoint = (
   url: string,
   opts?: RequestInit | undefined,
-): Response | null => {
-  const [data, setData] = useState<Response | null>(null);
+  /* eslint-disable-next-line */
+): any | null => {
+  const [data, setData] = useState(null);
   const { instance, accounts } = useMsal();
   const history = useHistory();
 
@@ -29,7 +31,9 @@ export const useEndpoint = (
           },
         };
 
-        fetch(url, opts).then((res) => setData(res));
+        fetch(url, opts)
+          .then((res) => res.json())
+          .then((data) => setData(data));
       })
       .catch(() => history.push('/'));
   }, []);

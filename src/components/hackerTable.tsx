@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import HackerRender from './hacker';
 import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
+import { useEndpoint } from '../api';
 interface Hacker {
   email: string;
   isaccepted: boolean;
@@ -38,16 +39,14 @@ export default function HackerTable(): JSX.Element {
     history.push('/');
   }
   const [hackers, setHacker] = useState<Array<Hacker>>([]);
+  const d = useEndpoint(
+    process.env.REACT_APP_API_URL + '/api/hackers/get_all_hackers/',
+  );
   useEffect(() => {
-    const hackerURL =
-      process.env.REACT_APP_API_URL + '/api/hackers/get_all_hackers/';
-    fetch(hackerURL, {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setHacker(data.hackers ?? []));
-  }, []);
+    if (d) {
+      setHacker(d.hackers ?? []);
+    }
+  });
   return (
     <div>
       <nav className="fixed top-0 z-10 w-screen grid grid-cols-2 bg-dark-gray drop-shadow-lg mb-3">
