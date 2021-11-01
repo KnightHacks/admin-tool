@@ -6,8 +6,7 @@ interface StatsInterface {
 }
 export default function StatsComponent(): JSX.Element {
   const [stats, setStats] = useState<StatsInterface>(Object);
-  const statsURL = 'https://api.knighthacks.org/api/stats/user_count/';
-  /*
+  const statsURL = process.env.REACT_APP_API_URL + '/api/stats/user_count/';
   useEffect(() => {
     fetch(statsURL, {
       method: 'GET',
@@ -22,7 +21,6 @@ export default function StatsComponent(): JSX.Element {
         throw new Error(err);
       });
   }, []);
-  */
   return (
     <div className="flex flex-wrap align-top justify-center items-center flex-rows gap-4 ">
       <div className="px-5 rounded-lg bg-red-500  items-center h-48 w-48 md:h-72 md:w-72 justify-center flex flex-col">

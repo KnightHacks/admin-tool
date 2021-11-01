@@ -22,6 +22,16 @@ import SponsorsPage from './SponsorsPage';
 function Dashboard(): JSX.Element {
   const { path, url } = useRouteMatch();
   const history = useHistory();
+  function Logout() {
+    const logoutURL = process.env.REACT_APP_API_URL + '/api/auth/signout/';
+    fetch(logoutURL, {
+      method: 'GET',
+      credentials: 'include',
+    }).catch((err) => {
+      throw new Error(err);
+    });
+    history.push(process.env.REACT_APP_AZURE_REDIRECT_URI);
+  }
   return (
     <div className="min-h-screen flex flex-row bg-dark-gray">
       <div className="flex flex-col w-16 md:w-72 bg-med-gray overflow-hidden">
@@ -92,7 +102,10 @@ function Dashboard(): JSX.Element {
                 history.replace('/');
               }}
             >
-              <span className="inline-flex items-center justify-center h-12 w-12">
+              <span
+                className="inline-flex items-center justify-center h-12 w-12"
+                onClick={Logout}
+              >
                 <LogoutIcon className="w-6" />
               </span>
               <span className="text-sm font-medium hidden md:block">

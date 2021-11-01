@@ -52,7 +52,7 @@ export default function SponsorTable(): JSX.Element {
 
   useEffect(() => {
     const sponsorURL =
-      'https://api.knighthacks.org/api/sponsors/get_all_sponsors/';
+      process.env.REACT_APP_API_URL + '/api/sponsors/get_all_sponsors/';
     fetch(sponsorURL, {
       method: 'GET',
       credentials: 'include',
@@ -81,7 +81,7 @@ export default function SponsorTable(): JSX.Element {
   }, []);
 
   function addSponsor(newSponsor: Sponsor): void {
-    const sponsorURL = 'https://stagingapi.knighthacks.org/api/sponsors/';
+    const sponsorURL = process.env.REACT_APP_API_URL + '/api/sponsors/';
     fetch(sponsorURL, {
       method: 'POST',
       credentials: 'include',
