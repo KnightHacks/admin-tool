@@ -29,7 +29,7 @@ function Dashboard(): JSX.Element {
     }).catch((err) => {
       throw new Error(err);
     });
-    history.push('/');
+    history.push(process.env.REACT_APP_AZURE_REDIRECT_URI);
   }
   return (
     <div className="min-h-screen flex flex-row bg-dark-gray">
