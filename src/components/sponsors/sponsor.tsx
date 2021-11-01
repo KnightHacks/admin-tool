@@ -2,7 +2,6 @@ import React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 
 import Link from '@mui/material/Link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -52,10 +51,10 @@ export function SponsorRender({ sponsor }: SponsorRenderProps): JSX.Element {
     return (
       <div className="w-full flex align-center justify-end md:px-5">
         <div
-          className="flex h-1/2 text-white align-center w-36 justify-center text-center rounded-xl py-3 px-4 md:px-8 text-xl font-bold backdrop-opacity-25"
+          className="h-1/2 text-white align-center xl:w-36 lg:w-28 w-20 xl:text-xl lg:text-lg text-base justify-center text-center rounded-xl py-3 px-1 lg:px-4 font-bold backdrop-opacity-25"
           style={{ color: textColor, backgroundColor: bgColor }}
         >
-          {'' + sponsor.tier}
+          {sponsor.tier}
         </div>
       </div>
     );
@@ -68,22 +67,23 @@ export function SponsorRender({ sponsor }: SponsorRenderProps): JSX.Element {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          className="mt-0"
         >
-          <div className="h-20 px-4 grid grid-cols-2 w-full gap-3 items-center justify-center">
+          <div className="xl:h-32 h-16 px-4 grid grid-cols-2 w-full gap-3 items-center justify-center">
             <div className="flex flex-row items-center">
               {sponsor.logo ? (
                 <img
-                  className="lg:h-16 h-8"
+                  className="xl:h-28 lg:h-16 h-0"
                   src={URL.createObjectURL(sponsor.logo)}
                 />
               ) : (
-                <DefaultLogo className="lg:h-16 h-8" />
+                <DefaultLogo className="xl:h-28 lg:h-16 h-0" />
               )}
               <div className="flex flex-col ml-8">
-                <p className="font-bold text-lg lg:text-2xl">{sponsor.name}</p>
+                <p className="font-bold lg:text-2xl">{sponsor.name}</p>
                 <Link
                   href={sponsor.website}
-                  className="text-medium italic text-gray-400"
+                  className="lg:text-lg text-sm italic"
                 >
                   {sponsor.website}
                 </Link>
@@ -93,7 +93,7 @@ export function SponsorRender({ sponsor }: SponsorRenderProps): JSX.Element {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography className="pl-4 pb-5">{sponsor.description}</Typography>
+          <p className="pl-4 pb-5 lg:text-lg">{sponsor.description}</p>
         </AccordionDetails>
       </Accordion>
     </div>

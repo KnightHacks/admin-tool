@@ -146,10 +146,7 @@ export default function SponsorForm({
                       type="file"
                       name="logoUpload"
                       onChange={(event) => {
-                        if (event.target.files) {
-                          console.log(event.target.files[0]);
-                          setLogo(event.target.files[0]);
-                        }
+                        if (event.target.files) setLogo(event.target.files[0]);
                       }}
                     />
                   </label>
