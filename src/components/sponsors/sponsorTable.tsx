@@ -8,9 +8,9 @@ import dummyArray from './dummySponsors';
 interface SponsorSchema {
   sponsor_name: string;
   subscription_tier: string;
-  sponsor_website: string; // URL
+  sponsor_website: string;
   description: string;
-  logo: string; // URI
+  logo: string;
 }
 
 export default function SponsorTable(): JSX.Element {
@@ -68,10 +68,13 @@ export default function SponsorTable(): JSX.Element {
       credentials: 'include',
       body: JSON.stringify({
         sponsor_name: newSponsor.name,
-        description: newSponsor.name,
-        subscription_tier: newSponsor.name,
-        sponsor_website: newSponsor.name,
-        logo: '', // TODO
+        description:
+          newSponsor.description === ''
+            ? 'No description provided.'
+            : newSponsor.description,
+        subscription_tier: newSponsor.tier,
+        sponsor_website: newSponsor.website,
+        logo: '',
       }),
     })
       .then(() => {
