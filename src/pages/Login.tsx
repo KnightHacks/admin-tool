@@ -11,7 +11,7 @@ export default function LoginPage(): JSX.Element {
   };
   const isAuthenticated = useIsAuthenticated();
   if (isAuthenticated) {
-    history.push('/Hackers');
+    history.push('/dashboard');
   }
   return (
     <div className="w-screen h-screen bg-dark-gray flex justify-center items-center">

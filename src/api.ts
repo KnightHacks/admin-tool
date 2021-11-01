@@ -24,7 +24,7 @@ export const useEndpoint = (
 
         opts = {
           ...opts,
-          //credentials: 'include',
+          credentials: 'include',
           headers: {
             ...opts.headers,
             Authorization: `Bearer ${res_tok.accessToken}`,
