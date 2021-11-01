@@ -5,7 +5,7 @@ import SponsorsComponent from '../components/SponsorsComponent';
 
 export default function HackerPage(): JSX.Element {
   return (
-    <div>
+    <div className="overflow-y-auto">
       <HackerTable />
       <StatsComponent />
       <SponsorsComponent />

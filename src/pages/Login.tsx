@@ -14,15 +14,21 @@ export default function LoginPage(): JSX.Element {
     history.push('/Hackers');
   }
   return (
-    <div className="w-[calc(100%-10px)] sm:w-1/2 lg:w-1/4 bg-white rounded-lg px-8 py-4">
-      <div className="flex flex-col items-center space-y-8">
-        <img src={KnightHacksLogo} alt="Knight Hacks Logo" className="w-3/4" />
-        <button
-          onClick={() => handleLogin()}
-          className="bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 px-4 py-2 w-full rounded-md font-semibold text-gray-900"
-        >
-          Sign In
-        </button>
+    <div className="w-screen h-screen bg-dark-gray flex justify-center items-center">
+      <div className="w-[calc(100%-10px)] sm:w-1/2 lg:w-1/4 bg-white rounded-lg px-8 py-4">
+        <div className="flex flex-col items-center space-y-8">
+          <img
+            src={KnightHacksLogo}
+            alt="Knight Hacks Logo"
+            className="w-3/4"
+          />
+          <button
+            onClick={() => handleLogin()}
+            className="bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 px-4 py-2 w-full rounded-md font-semibold text-gray-900"
+          >
+            Sign In
+          </button>
+        </div>
       </div>
     </div>
   );
