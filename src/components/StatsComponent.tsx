@@ -6,7 +6,7 @@ interface StatsInterface {
 }
 export default function StatsComponent(): JSX.Element {
   const [stats, setStats] = useState<StatsInterface>(Object);
-  const statsURL = 'https://api.knighthacks.org/api/stats/user_count/';
+  const statsURL = process.env.REACT_APP_API_URL + '/api/stats/user_count/';
   useEffect(() => {
     fetch(statsURL, {
       method: 'GET',

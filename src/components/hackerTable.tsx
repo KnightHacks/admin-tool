@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HackerRender from './hacker';
-
+import { useEndpoint } from '../api';
 interface Hacker {
   email: string;
   isaccepted: boolean;
@@ -25,17 +25,14 @@ interface Hacker {
 }
 export default function HackerTable(): JSX.Element {
   const [hackers, setHacker] = useState<Array<Hacker>>([]);
-  console.log(hackers[0]);
+  const d = useEndpoint(
+    process.env.REACT_APP_API_URL + '/api/hackers/get_all_hackers/',
+  );
   useEffect(() => {
-    const hackerURL =
-      'https://api.knighthacks.org/api/hackers/get_all_hackers/';
-    fetch(hackerURL, {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((data) => setHacker(data.hackers ?? []));
-  }, []);
+    if (d) {
+      setHacker(d.hackers ?? []);
+    }
+  });
   return (
     <div className="h-full my-8 flex flex-col items-center justify-center gap-3">
       {hackers.map((hacker) => (
