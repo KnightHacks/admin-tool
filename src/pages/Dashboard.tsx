@@ -1,6 +1,7 @@
 import React from 'react';
 import KnightHacksLogo from '../assets/knightHacksLogoGold.svg';
 import HackerPage from './HackerPage';
+import EventPage from './EventsPage';
 import {
   Route,
   Switch,
@@ -121,6 +122,9 @@ function Dashboard(): JSX.Element {
           </Route>
           <Route path={`${path}/hackers`}>
             <HackerPage />
+          </Route>
+          <Route path={`${path}/events`}>
+            <EventPage />
           </Route>
         </Switch>
       </div>
