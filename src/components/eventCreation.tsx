@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 export default function EventCreation(): JSX.Element {
   const [attendanceCount, setAttendanceCount] = useState('');
+  const [dateTime, setDateTime] = useState('');
   const [description, setDescription] = useState('');
+  const [endDateTime, setEndDateTime] = useState('');
   const [eventStatus, setEventStatus] = useState('');
   const [eventType, setEventType] = useState('');
   const [image, setImage] = useState('');
@@ -14,8 +16,14 @@ export default function EventCreation(): JSX.Element {
   function AttendanceCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setAttendanceCount(event.target.value);
   }
+  function DateStartCapture(event: React.ChangeEvent<HTMLInputElement>) {
+    setDateTime(event.target.value);
+  }
   function DescriptionCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setDescription(event.target.value);
+  }
+  function DateEndCapture(event: React.ChangeEvent<HTMLInputElement>) {
+    setEndDateTime(event.target.value);
   }
   function EventStatusCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setEventStatus(event.target.value);
@@ -38,7 +46,9 @@ export default function EventCreation(): JSX.Element {
   function CreateEvent() {
     const eventData = {
       attendance_count: attendanceCount,
+      date_time: dateTime,
       description: description,
+      end_date_time: endDateTime,
       event_status: eventStatus,
       event_type: eventType,
       image: image,
@@ -73,10 +83,12 @@ export default function EventCreation(): JSX.Element {
       {statusText}
       <label>Attendance Count</label>
       <input type="text" onChange={AttendanceCapture} />
-      <label>Date End</label>
+      <label>Date Start</label>
+      <input type="text" onChange={DateStartCapture} />
       <label>Description</label>
       <input type="text" onChange={DescriptionCapture} />
       <label>Date End</label>
+      <input type="text" onChange={DateEndCapture} />
       <label>Event Status</label>
       <input type="text" onChange={EventStatusCapture} />
       <label>Event Type</label>
