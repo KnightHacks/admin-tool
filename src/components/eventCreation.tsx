@@ -16,12 +16,19 @@ export default function EventCreation(): JSX.Element {
   const [refreshClubStatus, setRefreshClubStatus] = useState(0);
   const [refreshClubStatusText, setRefreshClubStatusText] = useState('');
   function RefreshClubEvents() {
-    const refreshEvents = useEndpoint(
-      process.env.REACT_APP_API_URL + '/api/club/refresh_events/',
-    );
-    if (refreshEvents) {
-      setRefreshClubStatus(refreshEvents.status);
-    }
+    const refreshClubURL =
+      process.env.REACT_APP_API_URL + '/api/club/refresh_events/';
+    fetch(refreshClubURL, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then((response) => setRefreshClubStatus(response.status))
+      .catch((err) => {
+        throw new Error(err);
+      });
     if (refreshClubStatus === 200) {
       setRefreshClubStatusText('Club events have been refreshed!');
     } else if (refreshClubStatus === 401) {
@@ -118,6 +125,7 @@ export default function EventCreation(): JSX.Element {
       <label>Name</label>
       <input type="text" onChange={EventNameCapture} />
       <button onClick={CreateEvent}>Submit</button>
+      <br />
       <button onClick={RefreshClubEvents}>Refresh Club Events</button>
       <p>{refreshClubStatusText}</p>
     </div>
