@@ -18,6 +18,7 @@ import {
   ViewBoardsIcon,
 } from '@heroicons/react/outline';
 import StatsPage from './StatsPage';
+import SponsorsPage from './SponsorsPage';
 
 function Dashboard(): JSX.Element {
   const { path, url } = useRouteMatch();
@@ -123,6 +124,8 @@ function Dashboard(): JSX.Element {
           <Route path={`${path}/hackers`}>
             <HackerPage />
           </Route>
+          <Route path={`${path}/sponsors`}>
+            <SponsorsPage />
           <Route path={`${path}/events`}>
             <EventPage />
           </Route>

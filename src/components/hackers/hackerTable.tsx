@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HackerRender from './hacker';
-import { useEndpoint } from '../api';
+import { useEndpoint } from '../../api';
 interface Hacker {
   email: string;
   isaccepted: boolean;
