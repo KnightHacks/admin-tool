@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useEndpoint } from '../api';
 export default function EventCreation(): JSX.Element {
   const [attendanceCount, setAttendanceCount] = useState('');
   const [dateTime, setDateTime] = useState('');
@@ -13,6 +13,12 @@ export default function EventCreation(): JSX.Element {
   const [eventName, setEventName] = useState('');
   const [statusCode, setStatusCode] = useState(0);
   const [statusText, setStatusText] = useState('');
+  function RefreshClubEvents() {
+    const d = useEndpoint(
+      process.env.REACT_APP_API_URL + '/api/club/refresh_events/',
+    );
+  }
+
   function AttendanceCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setAttendanceCount(event.target.value);
   }
@@ -102,6 +108,7 @@ export default function EventCreation(): JSX.Element {
       <label>Name</label>
       <input type="text" onChange={EventNameCapture} />
       <button onClick={CreateEvent}>Submit</button>
+      <button onClick={RefreshClubEvents}>Refresh Club Events</button>
     </div>
   );
 }
