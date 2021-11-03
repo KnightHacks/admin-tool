@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useEndpoint } from '../api';
 export default function EventCreation(): JSX.Element {
   const [attendanceCount, setAttendanceCount] = useState('');
   const [dateTime, setDateTime] = useState('');
@@ -13,6 +13,22 @@ export default function EventCreation(): JSX.Element {
   const [eventName, setEventName] = useState('');
   const [statusCode, setStatusCode] = useState(0);
   const [statusText, setStatusText] = useState('');
+  const [refreshClubStatus, setRefreshClubStatus] = useState(0);
+  const [refreshClubStatusText, setRefreshClubStatusText] = useState('');
+  function RefreshClubEvents() {
+    const refreshEvents = useEndpoint(
+      process.env.REACT_APP_API_URL + '/api/club/refresh_events/',
+    );
+    if (refreshEvents) {
+      setRefreshClubStatus(refreshEvents.status);
+    }
+    if (refreshClubStatus === 200) {
+      setRefreshClubStatusText('Club events have been refreshed!');
+    } else if (refreshClubStatus === 401) {
+      setRefreshClubStatusText('User is not logged in...please log in!');
+    }
+  }
+
   function AttendanceCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setAttendanceCount(event.target.value);
   }
@@ -102,6 +118,8 @@ export default function EventCreation(): JSX.Element {
       <label>Name</label>
       <input type="text" onChange={EventNameCapture} />
       <button onClick={CreateEvent}>Submit</button>
+      <button onClick={RefreshClubEvents}>Refresh Club Events</button>
+      <p>{refreshClubStatusText}</p>
     </div>
   );
 }
