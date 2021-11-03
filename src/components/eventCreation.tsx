@@ -19,7 +19,7 @@ export default function EventCreation(): JSX.Element {
       process.env.REACT_APP_API_URL + '/api/club/refresh_events/';
     console.log('api url is: ', refreshClubURL);
     const refreshClubEvent = useEndpoint(refreshClubURL);
-    console.log(refreshClubEvent);
+    console.log('data is: ', refreshClubEvent);
     if (refreshClubEvent.status === 200) {
       setRefreshClubStatusText('Club events have been refreshed!');
     } else if (refreshClubEvent.status === 401) {
