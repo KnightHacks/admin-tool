@@ -126,6 +126,7 @@ function Dashboard(): JSX.Element {
           </Route>
           <Route path={`${path}/sponsors`}>
             <SponsorsPage />
+          </Route>
           <Route path={`${path}/events`}>
             <EventPage />
           </Route>
