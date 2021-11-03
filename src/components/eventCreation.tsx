@@ -13,25 +13,15 @@ export default function EventCreation(): JSX.Element {
   const [eventName, setEventName] = useState('');
   const [statusCode, setStatusCode] = useState(0);
   const [statusText, setStatusText] = useState('');
-  const [refreshClubStatus, setRefreshClubStatus] = useState(0);
   const [refreshClubStatusText, setRefreshClubStatusText] = useState('');
   function RefreshClubEvents() {
     const refreshClubURL =
       process.env.REACT_APP_API_URL + '/api/club/refresh_events/';
-    fetch(refreshClubURL, {
-      method: 'PUT',
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
-      .then((response) => setRefreshClubStatus(response.status))
-      .catch((err) => {
-        throw new Error(err);
-      });
-    if (refreshClubStatus === 200) {
+    const refreshClubEvent = useEndpoint(refreshClubURL);
+    console.log(refreshClubEvent);
+    if (refreshClubEvent.status === 200) {
       setRefreshClubStatusText('Club events have been refreshed!');
-    } else if (refreshClubStatus === 401) {
+    } else if (refreshClubEvent.status === 401) {
       setRefreshClubStatusText('User is not logged in...please log in!');
     }
   }
