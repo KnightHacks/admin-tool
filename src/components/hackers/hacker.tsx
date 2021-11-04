@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useEndpoint } from '../../api';
 interface Hacker {
   email: string;
   isaccepted: boolean;
@@ -74,21 +75,33 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
   }
   function verifyEmail(data: Hacker, email: string): void {
     const sendEmailURL = `https://api.knighthacks.org/api/email/verify/${email}/`;
-    fetch(sendEmailURL, {
+    let opts: RequestInit = {
       method: 'POST',
-      credentials: 'include',
-    }).catch((err) => {
-      throw new Error(err);
+      credentials: 'include'
+    }
+    const sentEmail = useEndpoint(
+      sendEmailURL, opts
+    );
+    useEffect(() => {
+      if (sentEmail) {
+        alert("Verified email has been sent!")
+      }
     });
   }
   function acceptHacker(data: Hacker, email: string): void {
     if (data.isaccepted === false) {
       const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
-      fetch(acceptURL, {
+      let opts: RequestInit = {
         method: 'PUT',
-        credentials: 'include',
-      }).catch((err) => {
-        throw new Error(err);
+        credentials: 'include'
+      }
+      const sentAcceptEmail = useEndpoint(
+        acceptURL, opts
+      );
+      useEffect(() => {
+        if (sentAcceptEmail) {
+          alert("Accepted email has been sent!")
+        }
       });
       setHackerText(
         data.first_name + ' ' + data.last_name + ' has been accepted!',
@@ -202,12 +215,12 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                 <text> {data.why_attend ?? 'N/A'} </text>
               </div>
             </div>
-            <div className="aspect-w-16 aspect-h-9 flex items-center justify-center">
-              <iframe
-                className="w-5/6 h-96"
-                src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
-              />
-            </div>
+            // <div className="aspect-w-16 aspect-h-9 flex items-center justify-center">
+            //   <iframe
+            //     className="w-5/6 h-96"
+            //     src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
+            //   />
+            // </div>
           </div>
           <div className="flex gap-2 justify-end items-center">
             {showAcceptReject(data.isaccepted)}
