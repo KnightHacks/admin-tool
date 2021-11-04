@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { style } from '../../craco.config';
 import { useEndpoint } from '../api';
 export default function EventCreation(): JSX.Element {
   const [attendanceCount, setAttendanceCount] = useState('');
