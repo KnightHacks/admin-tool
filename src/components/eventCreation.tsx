@@ -19,11 +19,11 @@ export default function EventCreation(): JSX.Element {
   const styles = {
     input:
       'bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full mx-12 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-200',
-    label: 'text-gray-500 font-bold w-16 px-8',
+    label: 'text-gray-500 font-bold w-full md:w-16 px-8',
     field:
-      'flex flex-row w-full my-4 mx-8 gap-4 items-center jusitfy-center w-full',
+      'flex md:flex-row flex-col w-full my-4 mx-8 gap-4 items-center jusitfy-center',
     columns:
-      'lg:grid lg:grid-cols-2 flex flex-row items-center jusitfy-center w-full',
+      'lg:grid lg:grid-cols-2 flex flex-col items-center jusitfy-center my-4 mx-8 lg:m-0 w-full',
   };
   function RefreshClubEvents() {
     const refreshClubURL =
@@ -104,108 +104,115 @@ export default function EventCreation(): JSX.Element {
     }
   }
   return (
-    <div className="my-5 w-full bg-white  justify-center items-center text-center text-black p-8 gap-2 shadow-md rounded-xl ">
-      {statusText}
-      <div className={styles.field}>
-        <label className={styles.label}> Event Name</label>
-        <input
-          type="text"
-          className={styles.input}
-          onChange={EventNameCapture}
-        />
-      </div>
-      <div className={styles.columns}>
+    <div className=" min-h-screen flex items-center justify-center">
+      <div className="my-5 mx-5  bg-white  justify-center items-center text-center text-black p-8 gap-2 shadow-md rounded-xl ">
+        <text className="text-2xl font-bold"> Create an Event </text>
+        {statusText}
         <div className={styles.field}>
-          <label className={styles.label}>Location</label>
+          <label className={styles.label}> Event Name</label>
           <input
             type="text"
             className={styles.input}
-            onChange={LocationCapture}
+            onChange={EventNameCapture}
           />
         </div>
+        <div className={styles.columns}>
+          <div className={styles.field}>
+            <label className={styles.label}>Location</label>
+            <input
+              type="text"
+              className={styles.input}
+              onChange={LocationCapture}
+            />
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>Attendance Count</label>
+            <input
+              type="number"
+              className={styles.input}
+              onChange={AttendanceCapture}
+            />
+          </div>
+        </div>
+
+        <div className={styles.columns}>
+          <div className={styles.field}>
+            <label className={styles.label}>Start Date</label>
+            <input
+              type="datetime-local"
+              className={styles.input}
+              onChange={DateStartCapture}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label className={styles.label}>End Date</label>
+            <input
+              type="datetime-local"
+              className={styles.input}
+              onChange={DateEndCapture}
+            />
+          </div>
+        </div>
+
         <div className={styles.field}>
-          <label className={styles.label}>Attendance Count</label>
+          <label className={styles.label}>Description</label>
+          <textarea className={styles.input} onChange={DescriptionCapture} />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label}>Event Status</label>
           <input
-            type="number"
+            type="text"
             className={styles.input}
-            onChange={AttendanceCapture}
+            onChange={EventStatusCapture}
           />
         </div>
-      </div>
 
-      <div className={styles.columns}>
         <div className={styles.field}>
-          <label className={styles.label}>Start Date</label>
+          <label className={styles.label}>Event Type</label>
           <input
-            type="datetime-local"
+            type="text"
             className={styles.input}
-            onChange={DateStartCapture}
+            onChange={EventTypeCapture}
           />
         </div>
 
-        <div className={styles.field}>
-          <label className={styles.label}>End Date</label>
-          <input
-            type="datetime-local"
-            className={styles.input}
-            onChange={DateEndCapture}
-          />
-        </div>
-      </div>
+        <div className={styles.columns}>
+          <div className={styles.field}>
+            <label className={styles.label}>Image</label>
+            <input
+              type="url"
+              className={styles.input}
+              onChange={ImageCapture}
+            />
+          </div>
 
-      <div className={styles.field}>
-        <label className={styles.label}>Description</label>
-        <textarea className={styles.input} onChange={DescriptionCapture} />
-      </div>
-      <div className={styles.field}>
-        <label className={styles.label}>Event Status</label>
-        <input
-          type="text"
-          className={styles.input}
-          onChange={EventStatusCapture}
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label className={styles.label}>Event Type</label>
-        <input
-          type="text"
-          className={styles.input}
-          onChange={EventTypeCapture}
-        />
-      </div>
-
-      <div className={styles.columns}>
-        <div className={styles.field}>
-          <label className={styles.label}>Image</label>
-          <input type="url" className={styles.input} onChange={ImageCapture} />
+          <div className={styles.field}>
+            <label className={styles.label}>Link</label>
+            <input
+              type="url"
+              className={styles.input}
+              onChange={EventLinkCapture}
+            />
+          </div>
         </div>
 
-        <div className={styles.field}>
-          <label className={styles.label}>Link</label>
-          <input
-            type="url"
-            className={styles.input}
-            onChange={EventLinkCapture}
-          />
+        <div className="flex mt-8 flex-row gap-8 items-center justify-center">
+          <button
+            className="p-4 font-bold text-center w-32 rounded-lg bg-yellow-300 text-yellow-800"
+            onClick={CreateEvent}
+          >
+            Submit
+          </button>
+          <button
+            className="p-4 font-bold text-center w-32 rounded-lg bg-purple-300 text-yellow-purple"
+            onClick={RefreshClubEvents}
+          >
+            Refresh
+          </button>
         </div>
+        <p>{refreshClubStatusText}</p>
       </div>
-
-      <div className="flex mt-8 flex-row gap-8 items-center justify-center">
-        <button
-          className="p-4 font-bold text-center w-32 rounded-lg bg-yellow-300 text-yellow-800"
-          onClick={CreateEvent}
-        >
-          Submit
-        </button>
-        <button
-          className="p-4 font-bold text-center w-32 rounded-lg bg-purple-300 text-yellow-purple"
-          onClick={RefreshClubEvents}
-        >
-          Refresh
-        </button>
-      </div>
-      <p>{refreshClubStatusText}</p>
     </div>
   );
 }
