@@ -104,8 +104,8 @@ export default function EventCreation(): JSX.Element {
     }
   }
   return (
-    <div className=" min-h-screen flex items-center justify-center">
-      <div className="my-5 mx-5  bg-white  justify-center items-center text-center text-black p-8 gap-2 shadow-md rounded-xl ">
+    <div className="md:w-full sm:w-  min-h-screen flex items-center justify-center">
+      <div className="my-5 mx-5 lg:w-full w-auto  bg-white  justify-center items-center text-center text-black p-8 gap-2 shadow-md rounded-xl ">
         <text className="text-2xl font-bold"> Create an Event </text>
         {statusText}
         <div className={styles.field}>
