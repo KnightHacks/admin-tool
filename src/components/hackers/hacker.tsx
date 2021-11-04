@@ -202,12 +202,6 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
                 <text> {data.why_attend ?? 'N/A'} </text>
               </div>
             </div>
-            <div className="aspect-w-16 aspect-h-9 flex items-center justify-center">
-              <iframe
-                className="w-5/6 h-96"
-                src={`//api.knighthacks.org/api/hackers/${data.email}/resume/`}
-              />
-            </div>
           </div>
           <div className="flex gap-2 justify-end items-center">
             {showAcceptReject(data.isaccepted)}
