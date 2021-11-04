@@ -14,6 +14,8 @@ export default function EventCreation(): JSX.Element {
   const [statusCode, setStatusCode] = useState(0);
   const [statusText, setStatusText] = useState('');
   const [refreshClubStatusText, setRefreshClubStatusText] = useState('');
+  const formDiv =
+    'flex flex-row gap-2 items-center justify-center no-wrap w-screen';
   function RefreshClubEvents() {
     const refreshClubURL =
       process.env.REACT_APP_API_URL + '/api/club/refresh_events/';
@@ -93,24 +95,24 @@ export default function EventCreation(): JSX.Element {
     }
   }
   return (
-    <div>
+    <div className="my-5 sm:w-full  bg-red-500 flex flex-col justify-center align-center text-center text-black p-5  shadow-md rounded-xl ">
       {statusText}
       <label>Attendance Count</label>
-      <input type="text" onChange={AttendanceCapture} />
+      <input type="number" onChange={AttendanceCapture} />
       <label>Date Start</label>
-      <input type="text" onChange={DateStartCapture} />
+      <input type="datetime-local" onChange={DateStartCapture} />
       <label>Description</label>
       <input type="text" onChange={DescriptionCapture} />
       <label>Date End</label>
-      <input type="text" onChange={DateEndCapture} />
+      <input type="datetime-local" onChange={DateEndCapture} />
       <label>Event Status</label>
       <input type="text" onChange={EventStatusCapture} />
       <label>Event Type</label>
       <input type="text" onChange={EventTypeCapture} />
       <label>Image</label>
-      <input type="text" onChange={ImageCapture} />
+      <input type="url" onChange={ImageCapture} />
       <label>Link</label>
-      <input type="text" onChange={EventLinkCapture} />
+      <input type="url" onChange={EventLinkCapture} />
       <label>Location</label>
       <input type="text" onChange={LocationCapture} />
       <label>Name</label>
