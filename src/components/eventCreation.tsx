@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { style } from '../../craco.config';
 import { useEndpoint } from '../api';
 export default function EventCreation(): JSX.Element {
   const [attendanceCount, setAttendanceCount] = useState('');
@@ -14,8 +15,16 @@ export default function EventCreation(): JSX.Element {
   const [statusCode, setStatusCode] = useState(0);
   const [statusText, setStatusText] = useState('');
   const [refreshClubStatusText, setRefreshClubStatusText] = useState('');
-  const formDiv =
-    'flex flex-row gap-2 items-center justify-center no-wrap w-screen';
+
+  const styles = {
+    input:
+      'bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full mx-12 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-yellow-200',
+    label: 'text-gray-500 font-bold w-16 px-8',
+    field:
+      'flex flex-row w-full my-4 mx-8 gap-4 items-center jusitfy-center w-full',
+    columns:
+      'lg:grid lg:grid-cols-2 flex flex-row items-center jusitfy-center w-full',
+  };
   function RefreshClubEvents() {
     const refreshClubURL =
       process.env.REACT_APP_API_URL + '/api/club/refresh_events/';
@@ -35,7 +44,7 @@ export default function EventCreation(): JSX.Element {
   function DateStartCapture(event: React.ChangeEvent<HTMLInputElement>) {
     setDateTime(event.target.value);
   }
-  function DescriptionCapture(event: React.ChangeEvent<HTMLInputElement>) {
+  function DescriptionCapture(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setDescription(event.target.value);
   }
   function DateEndCapture(event: React.ChangeEvent<HTMLInputElement>) {
@@ -95,31 +104,107 @@ export default function EventCreation(): JSX.Element {
     }
   }
   return (
-    <div className="my-5 sm:w-full  bg-red-500 flex flex-col justify-center align-center text-center text-black p-5  shadow-md rounded-xl ">
+    <div className="my-5 w-full bg-white  justify-center items-center text-center text-black p-8 gap-2 shadow-md rounded-xl ">
       {statusText}
-      <label>Attendance Count</label>
-      <input type="number" onChange={AttendanceCapture} />
-      <label>Date Start</label>
-      <input type="datetime-local" onChange={DateStartCapture} />
-      <label>Description</label>
-      <input type="text" onChange={DescriptionCapture} />
-      <label>Date End</label>
-      <input type="datetime-local" onChange={DateEndCapture} />
-      <label>Event Status</label>
-      <input type="text" onChange={EventStatusCapture} />
-      <label>Event Type</label>
-      <input type="text" onChange={EventTypeCapture} />
-      <label>Image</label>
-      <input type="url" onChange={ImageCapture} />
-      <label>Link</label>
-      <input type="url" onChange={EventLinkCapture} />
-      <label>Location</label>
-      <input type="text" onChange={LocationCapture} />
-      <label>Name</label>
-      <input type="text" onChange={EventNameCapture} />
-      <button onClick={CreateEvent}>Submit</button>
-      <br />
-      <button onClick={RefreshClubEvents}>Refresh Club Events</button>
+      <div className={styles.field}>
+        <label className={styles.label}> Event Name</label>
+        <input
+          type="text"
+          className={styles.input}
+          onChange={EventNameCapture}
+        />
+      </div>
+      <div className={styles.columns}>
+        <div className={styles.field}>
+          <label className={styles.label}>Location</label>
+          <input
+            type="text"
+            className={styles.input}
+            onChange={LocationCapture}
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label}>Attendance Count</label>
+          <input
+            type="number"
+            className={styles.input}
+            onChange={AttendanceCapture}
+          />
+        </div>
+      </div>
+
+      <div className={styles.columns}>
+        <div className={styles.field}>
+          <label className={styles.label}>Start Date</label>
+          <input
+            type="datetime-local"
+            className={styles.input}
+            onChange={DateStartCapture}
+          />
+        </div>
+
+        <div className={styles.field}>
+          <label className={styles.label}>End Date</label>
+          <input
+            type="datetime-local"
+            className={styles.input}
+            onChange={DateEndCapture}
+          />
+        </div>
+      </div>
+
+      <div className={styles.field}>
+        <label className={styles.label}>Description</label>
+        <textarea className={styles.input} onChange={DescriptionCapture} />
+      </div>
+      <div className={styles.field}>
+        <label className={styles.label}>Event Status</label>
+        <input
+          type="text"
+          className={styles.input}
+          onChange={EventStatusCapture}
+        />
+      </div>
+
+      <div className={styles.field}>
+        <label className={styles.label}>Event Type</label>
+        <input
+          type="text"
+          className={styles.input}
+          onChange={EventTypeCapture}
+        />
+      </div>
+
+      <div className={styles.columns}>
+        <div className={styles.field}>
+          <label className={styles.label}>Image</label>
+          <input type="url" className={styles.input} onChange={ImageCapture} />
+        </div>
+
+        <div className={styles.field}>
+          <label className={styles.label}>Link</label>
+          <input
+            type="url"
+            className={styles.input}
+            onChange={EventLinkCapture}
+          />
+        </div>
+      </div>
+
+      <div className="flex mt-8 flex-row gap-8 items-center justify-center">
+        <button
+          className="p-4 font-bold text-center w-32 rounded-lg bg-yellow-300 text-yellow-800"
+          onClick={CreateEvent}
+        >
+          Submit
+        </button>
+        <button
+          className="p-4 font-bold text-center w-32 rounded-lg bg-purple-300 text-yellow-purple"
+          onClick={RefreshClubEvents}
+        >
+          Refresh
+        </button>
+      </div>
       <p>{refreshClubStatusText}</p>
     </div>
   );
