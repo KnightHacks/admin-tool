@@ -24,6 +24,9 @@ interface Hacker {
   email_verification: boolean;
   what_learn: Array<string>;
   why_attend: Array<string>;
+  mlh: {
+    mlh_send_messages: true;
+  };
 }
 export default function HackerTable(): JSX.Element {
   const [hackers, setHacker] = useState<Array<Hacker>>([]);
