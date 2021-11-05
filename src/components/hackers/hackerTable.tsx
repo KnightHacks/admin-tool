@@ -134,6 +134,7 @@ export default function HackerTable(): JSX.Element {
     useTextFile: false,
     useBom: true,
     useKeysAsHeaders: true,
+    filename: 'KH_2021',
     // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
   };
 

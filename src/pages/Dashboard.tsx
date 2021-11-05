@@ -116,7 +116,7 @@ function Dashboard(): JSX.Element {
           </li>
         </ul>
       </div>
-      <div className="flex flex-1 justify-center items-center">
+      <div className="flex h-full flex-1 justify-center items-center">
         <Switch>
           <Route exact path={path}>
             <StatsPage />
