@@ -22,7 +22,7 @@ export default function StatsComponent(): JSX.Element {
       });
   }, []);
   return (
-    <div className="flex flex-wrap align-top justify-center items-center flex-rows gap-4 ">
+    <div className="flex flex-wrap align-top justify-center items-center flex-rows gap-4 h-full">
       <div className="px-5 rounded-lg bg-red-500  items-center h-48 w-48 md:h-72 md:w-72 justify-center flex flex-col">
         <div className="text-6xl md:text-8xl font-bold text-white">
           {' '}

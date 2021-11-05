@@ -25,6 +25,9 @@ interface Hacker {
   email_verification: boolean;
   what_learn: Array<string>;
   why_attend: Array<string>;
+  mlh: {
+    mlh_send_messages: true;
+  };
 }
 interface HackerRenderProps {
   data: Hacker;
@@ -121,14 +124,14 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
     return Math.floor(diff_days);
   }
   return (
-    <div className="lg:w-4/6 h-full">
+    <div className="md:w-4/6 w-5/6 h-full">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <div className="h-24 px-4 grid grid-cols-2 w-full gap-3 items-center justify-center">
+          <div className="h-24 px-4 grid grid-cols-2 w-full gap-3 items-center justify-center mx-4">
             <div className="flex flex-col  ">
               <text className="font-bold text-lg lg:text-2xl">
                 {' '}
@@ -201,17 +204,16 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
               </div>
             </div>
 
-            <div className="flex lg:flex-row flex-col justify-center gap-2 px-5 mb-12">
-              <div className="w-full lg:w-1/2">
+            <div className="flex flex-col justify-center gap-2 px-5 mb-12">
+              <div className="w-full">
                 <div className="font-bold"> What do you want to learn? </div>
                 <text> {data.what_learn ?? 'N/A'} </text>
               </div>
-              <div className="w-full lg:w-1/2">
+              <div className="w-full ">
                 <div className="font-bold"> Why do you want to attend? </div>
                 <text> {data.why_attend ?? 'N/A'} </text>
               </div>
             </div>
-            <div className="aspect-w-16 aspect-h-9 flex items-center justify-center" />
           </div>
           <div className="flex gap-2 justify-end items-center">
             {showAcceptReject(data.isaccepted)}
