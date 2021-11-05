@@ -34,8 +34,8 @@ function Dashboard(): JSX.Element {
     history.push(process.env.REACT_APP_AZURE_REDIRECT_URI);
   }
   return (
-    <div className="min-h-screen flex flex-row bg-dark-gray">
-      <div className="flex flex-col w-16 md:w-72 bg-med-gray overflow-hidden">
+    <div className="h-full w-full flex flex-row bg-dark-gray">
+      <div className="flex flex-initial flex-col w-16 md:w-72 bg-med-gray">
         <div className="flex items-center justify-center h-20 shadow-md">
           <img
             src={KnightHacksLogo}

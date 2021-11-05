@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useEndpoint } from '../../api';
 interface Hacker {
   email: string;
   isaccepted: boolean;
@@ -24,6 +25,9 @@ interface Hacker {
   email_verification: boolean;
   what_learn: Array<string>;
   why_attend: Array<string>;
+  mlh: {
+    mlh_send_messages: true;
+  };
 }
 interface HackerRenderProps {
   data: Hacker;
@@ -74,21 +78,29 @@ export default function HackerRender({ data }: HackerRenderProps): JSX.Element {
   }
   function verifyEmail(data: Hacker, email: string): void {
     const sendEmailURL = `https://api.knighthacks.org/api/email/verify/${email}/`;
-    fetch(sendEmailURL, {
+    const opts: RequestInit = {
       method: 'POST',
       credentials: 'include',
-    }).catch((err) => {
-      throw new Error(err);
+    };
+    const sentEmail = useEndpoint(sendEmailURL, opts);
+    useEffect(() => {
+      if (sentEmail) {
+        alert('Verified email has been sent!');
+      }
     });
   }
   function acceptHacker(data: Hacker, email: string): void {
     if (data.isaccepted === false) {
       const acceptURL = `https://api.knighthacks.org/api/hackers/${email}/accept/`;
-      fetch(acceptURL, {
+      const opts: RequestInit = {
         method: 'PUT',
         credentials: 'include',
-      }).catch((err) => {
-        throw new Error(err);
+      };
+      const sentAcceptEmail = useEndpoint(acceptURL, opts);
+      useEffect(() => {
+        if (sentAcceptEmail) {
+          alert('Accepted email has been sent!');
+        }
       });
       setHackerText(
         data.first_name + ' ' + data.last_name + ' has been accepted!',
